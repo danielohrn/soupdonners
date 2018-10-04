@@ -5,6 +5,8 @@ import { Route } from "react-router-dom";
 
 import ContextProvider from "./context/Provider";
 import AppHeader from "./components/AppHeader";
+import ShoppingCart from "./components/ShoppingCart";
+
 import routes from "./routes";
 
 class App extends Component {
@@ -21,9 +23,10 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="App">
         <ContextProvider>
           <AppHeader />
+          <ShoppingCart />
           {this.pageRoutes()}
         </ContextProvider>
       </div>

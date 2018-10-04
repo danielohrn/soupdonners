@@ -1,31 +1,40 @@
 import React from "react";
 
+import { Route } from "react-router-dom";
 import ContextConsumer from "../context/Consumer";
 
-export default class ProductsPage extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Soppor bror</h1>
-            <ContextConsumer>
-                {({products}) => (
-                  products.map(p => (
-                    <Product key={p.name} name={p.name} price={p.price} img={p.img}/>
-                  ))
+import Product from "../components/Product";
+
+export default props => {
+  return (
+    <div
+      style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+    >
+      <ContextConsumer>
+        {({ products, addToCart }) =>
+          products.map(p => (
+            <React.Fragment>
+              <Product.Thumbnail key={p.name} product={p} />
+
+              <Route
+                key={p.id}
+                path={
+                  props.match.path +
+                  "/" +
+                  p.name.replace(/\s/gi, "-").toLowerCase()
+                }
+                render={props => (
+                  <Product.Expanded
+                    {...props}
+                    product={p}
+                    addToCart={addToCart}
+                  />
                 )}
-            </ContextConsumer>
-      </div>
-    );
-  }
-}
-
-
-const Product = ({name, price, img}) => (
-  <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-    <img style={{width: '50%'}}src={img} alt={name}/>
-    <p>{name}</p>
-    <p>{price} SEK</p>
-    <button>Köp</button>
-  </div>
-); 
-
+              />
+            </React.Fragment>
+          ))
+        }
+      </ContextConsumer>
+    </div>
+  );
+};

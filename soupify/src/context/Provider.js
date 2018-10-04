@@ -1,38 +1,43 @@
 import React, { Component, createContext } from "react";
+import STATE from "./state";
 
 export const AppContext = createContext();
 
 export default class ContextProvider extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      products: [
-        {
-          name: "Krya på dig",
-          price: 99,
-          img:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRgacPAcqf9X5blJa_m6t6zXfd9s4YZj4WA62FkztWFshjdf3r"
-        },
-        {
-          name: "Höstsoppa",
-          price: 99,
-          img:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRgacPAcqf9X5blJa_m6t6zXfd9s4YZj4WA62FkztWFshjdf3r"
-        },
-        {
-          name: "Kall soppa",
-          price: 99,
-          img:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRgacPAcqf9X5blJa_m6t6zXfd9s4YZj4WA62FkztWFshjdf3r"
-        }
-      ]
-    };
+    this.state = STATE;
   }
+
+  addToCart = id => {
+    const shoppingCart = { ...this.state.shoppingCart };
+
+    // find product that matches with provided id
+    const productToAdd = this.state.products.filter(
+      product => product.id === id
+    )[0];
+
+    // if product found add it to cart
+    if (productToAdd) {
+      shoppingCart.items.push(productToAdd);
+      this.setState({ shoppingCart }, () => console.log(this.state));
+    }
+  };
+
+  toggleShoppingCart = () => {
+    const shoppingCart = Object.assign({}, this.state.shoppingCart);
+    shoppingCart.isOpen = !shoppingCart.isOpen;
+    this.setState({ shoppingCart });
+  };
+
   render() {
     return (
       <AppContext.Provider
         value={{
-          products: this.state.products
+          products: this.state.products,
+          shoppingCart: this.state.shoppingCart,
+          toggleShoppingCart: this.toggleShoppingCart,
+          addToCart: this.addToCart
         }}
       >
         {this.props.children}

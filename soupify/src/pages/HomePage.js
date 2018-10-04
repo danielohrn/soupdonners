@@ -11,7 +11,7 @@ export default class HomePage extends React.Component {
           <Column>
             <img
               alt="bruh"
-              style={{ width: "100%", marginRight: "2%" }}
+              style={{ width: "60%", height: "auto" }}
               src="https://travelshop.se/wp-content/uploads/2017/12/Suspended-soppa-e1523262072796.jpg"
             />
           </Column>
@@ -28,7 +28,7 @@ export default class HomePage extends React.Component {
           <Column>
             <img
               alt="bruh"
-              style={{ width: "100%" }}
+              style={{ width: "60%", height: "auto" }}
               src="https://www.technobezz.com/files/uploads/2017/12/Door-Dash.png"
             />
           </Column>
@@ -37,7 +37,7 @@ export default class HomePage extends React.Component {
           <Column>
             <img
               alt="bruh"
-              style={{ width: "100%" }}
+              style={{ width: "60%", height: "auto" }}
               src="https://i2.wp.com/techbizweb.com/wp-content/uploads/2017/01/What-Seperates-Uber-from-a-Taxi-and-How-to-Use-the-Uber-App.gif?fit=400%2C700"
             />
           </Column>
@@ -50,7 +50,11 @@ export default class HomePage extends React.Component {
   }
 }
 
-const Row = ({ children }) => <div style={{ display: "flex" }}>{children}</div>;
+const Row = ({ children }) => (
+  <div style={{ display: "flex", maxWidth: "500px", margin: "0 auto" }}>
+    {children}
+  </div>
+);
 
 const Column = ({ children }) => (
   <div style={{ ...flexCenter, width: "48%", padding: "0 2%" }}>{children}</div>

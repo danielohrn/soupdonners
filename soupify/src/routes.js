@@ -17,6 +17,12 @@ const routes = [
     exact: false
   },
   {
+    slug: "/login",
+    name: "Login",
+    component: () => <h1>Login</h1>,
+    exact: false
+  },
+  {
     slug: "/profile",
     name: "Profile",
     component: () => <h1>Profile</h1>,
