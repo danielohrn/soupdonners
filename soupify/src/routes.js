@@ -1,11 +1,20 @@
 import React from "react";
 
+import HomePage from "./pages/HomePage";
+import ProductsPage from "./pages/ProductsPage";
+
 const routes = [
   {
     slug: "/",
     name: "Home",
-    component: () => <h1>Home</h1>,
+    component: HomePage,
     exact: true
+  },
+  {
+    slug: "/products",
+    name: "Products",
+    component: ProductsPage,
+    exact: false
   },
   {
     slug: "/profile",
