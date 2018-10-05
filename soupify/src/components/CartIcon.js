@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default ({ onClick, amount }) => (
-  <Link to={"/cart"}>
-    <div
-      onClick={onClick}
-      style={{
-        zIndex: 1,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
+export default ({ amount }) => (
+  <Link
+    style={{
+      zIndex: 1,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }}
+    to={"/cart"}
+  >
+    <div>
       <svg
         style={{
           transform: "rotateY(180deg) scale(1.5)",
