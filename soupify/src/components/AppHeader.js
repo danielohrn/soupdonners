@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PostCodeForm from "./PostCodeForm";
+import ShoppingCartIcon from "../assets/CartIcon";
+import ContextConsumer from "../context/Consumer";
 
 const AppHeader = () => (
   <header
@@ -17,8 +19,14 @@ const AppHeader = () => (
       }}
     >
       <Link to={"/"}>Soppogram</Link>
+
       <nav style={{ display: "flex" }}>
         <button style={{ margin: ".5px 10px" }}>Logga in</button>
+        <ContextConsumer>
+          {({ shoppingCart: { items } }) => (
+            <ShoppingCartIcon amount={items.length} />
+          )}
+        </ContextConsumer>
       </nav>
     </div>
     <PostCodeForm />

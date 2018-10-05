@@ -20,13 +20,27 @@ export default class ContextProvider extends Component {
     // if product found add it to cart
     if (productToAdd) {
       shoppingCart.items.push(productToAdd);
-      this.setState({ shoppingCart }, () => console.log(this.state));
+      this.setState({ shoppingCart });
+      this.updateOrderSummary();
     }
   };
 
-  toggleShoppingCart = () => {
-    const shoppingCart = Object.assign({}, this.state.shoppingCart);
-    shoppingCart.isOpen = !shoppingCart.isOpen;
+  updateOrderSummary = () => {
+    const shoppingCart = { ...this.state.shoppingCart };
+    shoppingCart.orderSummary = shoppingCart.items.reduce(
+      (summary, item) => {
+        if (!summary[item.name]) {
+          summary[item.name] = 0;
+        }
+
+        summary[item.name]++;
+        summary.total += item.price;
+
+        return summary;
+      },
+      { total: 0 }
+    );
+
     this.setState({ shoppingCart });
   };
 
@@ -36,7 +50,6 @@ export default class ContextProvider extends Component {
         value={{
           products: this.state.products,
           shoppingCart: this.state.shoppingCart,
-          toggleShoppingCart: this.toggleShoppingCart,
           addToCart: this.addToCart
         }}
       >

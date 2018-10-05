@@ -11,7 +11,7 @@ const Thumbnail = ({ product: { name, img, price, id } }) => {
       <Link to={"/products/" + slug}>
         <img src={img} alt={name} style={{ width: "100%", height: "auto" }} />
         <p>{name}</p>
-        <p>{price} SEK</p>
+        <p>{price} kr</p>
       </Link>
     </div>
   );
@@ -51,7 +51,7 @@ const Expanded = ({
 
       <img src={img} style={{ width: 500 }} />
       <p>{name}</p>
-      <p>{price} SEK</p>
+      <p>{price} kr</p>
       <p>{description}</p>
 
       <button onClick={() => addToCart(id)}>Lägg till i varukorg</button>

@@ -1,9 +1,7 @@
-const generateId = (function() {
+const generateId = (() => {
   let id = 0;
 
-  return function() {
-    return ++id;
-  };
+  return () => ++id;
 })();
 
 const state = {
@@ -66,7 +64,10 @@ const state = {
 
   shoppingCart: {
     isOpen: false,
-    items: []
+    items: [],
+    orderSummary: {
+      total: 0
+    }
   }
 };
 

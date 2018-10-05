@@ -2,6 +2,7 @@ import React from "react";
 
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
+import ShoppingCart from "./pages/ShoppingCart";
 
 const routes = [
   {
@@ -14,6 +15,12 @@ const routes = [
     slug: "/products",
     name: "Products",
     component: ProductsPage,
+    exact: false
+  },
+  {
+    slug: "/cart",
+    name: "Cart",
+    component: ShoppingCart,
     exact: false
   },
   {
