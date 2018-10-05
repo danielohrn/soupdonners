@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PostCodeForm from "./PostCodeForm";
-import ShoppingCartIcon from "../assets/CartIcon";
+import ShoppingCartIcon from "./CartIcon";
 import ContextConsumer from "../context/Consumer";
 
 const AppHeader = () => (
