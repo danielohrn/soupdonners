@@ -17,11 +17,10 @@ export default class ContextProvider extends Component {
       product => product.id === id
     )[0];
 
-    // if product found add it to cart
+    // if product found add it to cart and update ordersummary
     if (productToAdd) {
       shoppingCart.items.push(productToAdd);
-      this.setState({ shoppingCart });
-      this.updateOrderSummary();
+      this.setState({ shoppingCart }, this.updateOrderSummary);
     }
   };
 
