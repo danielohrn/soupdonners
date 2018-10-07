@@ -59,6 +59,14 @@ const state = {
   shoppingCart: {
     items: [],
     orderSummary: {}
+  },
+
+  user: {
+    isSignedIn: false,
+    info: {
+      name: null,
+      email: null
+    }
   }
 };
 

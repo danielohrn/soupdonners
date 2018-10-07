@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Consumer from "../context/Consumer";
+import ProductSummary from "../components/ProductSummary";
 
 export default () => {
   return (
@@ -33,21 +34,5 @@ export default () => {
         }}
       </Consumer>
     </div>
-  );
-};
-
-const ProductSummary = ({
-  product: { quantity, name, img, price, id },
-  addToCart,
-  removeFromCart
-}) => {
-  return (
-    <li style={{ listStyleType: "none" }}>
-      <img src={img} alt={name} style={{ width: 120 }} />
-      {name}
-      <button onClick={() => removeFromCart(id)}>-</button>
-      {quantity}
-      <button onClick={() => addToCart(id)}>+</button>
-    </li>
   );
 };

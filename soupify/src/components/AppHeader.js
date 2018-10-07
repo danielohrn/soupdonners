@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PostCodeForm from "./PostCodeForm";
 import ShoppingCartIcon from "./CartIcon";
 import ContextConsumer from "../context/Consumer";
+import ProfileIcon from "../assets/ProfileIcon";
 
 const AppHeader = () => (
   <header
@@ -20,14 +21,26 @@ const AppHeader = () => (
     >
       <Link to={"/"}>Soppogram</Link>
 
-      <nav style={{ display: "flex" }}>
-        <button style={{ margin: ".5px 10px" }}>Logga in</button>
-        <ContextConsumer>
-          {({ shoppingCart: { items } }) => (
+      <ContextConsumer>
+        {({ shoppingCart: { items }, user: { isSignedIn, info } }) => (
+          <nav style={{ display: "flex" }}>
+            <Link
+              to={isSignedIn ? "/profile" : "/register"}
+              style={{ margin: ".5px 10px" }}
+            >
+              {isSignedIn ? (
+                <React.Fragment>
+                  {info.name}
+                  <ProfileIcon />
+                </React.Fragment>
+              ) : (
+                "Logga in"
+              )}
+            </Link>
             <ShoppingCartIcon amount={items.length} />
-          )}
-        </ContextConsumer>
-      </nav>
+          </nav>
+        )}
+      </ContextConsumer>
     </div>
     <PostCodeForm />
   </header>

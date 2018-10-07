@@ -3,6 +3,8 @@ import React from "react";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
 import ShoppingCart from "./pages/ShoppingCart";
+import RegisterPage from "./pages/RegisterPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const routes = [
   {
@@ -30,9 +32,15 @@ const routes = [
     exact: false
   },
   {
+    slug: "/register",
+    name: "Register",
+    component: RegisterPage,
+    exact: false
+  },
+  {
     slug: "/profile",
     name: "Profile",
-    component: () => <h1>Profile</h1>,
+    component: ProfilePage,
     exact: false
   },
   {

@@ -9,6 +9,24 @@ export default class ContextProvider extends Component {
     this.state = STATE;
   }
 
+  register = e => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const user = {
+      ...this.state.user,
+      isSignedIn: true,
+      info: { email, name: email }
+    };
+
+    this.setState({ user }, () => console.log(this.state.user));
+  };
+
+  logOut = () => {
+    this.setState({
+      user: { isSignedIn: false, info: { name: null, email: null } }
+    });
+  };
+
   addToCart = id => {
     const shoppingCart = { ...this.state.shoppingCart };
 
@@ -63,6 +81,9 @@ export default class ContextProvider extends Component {
         value={{
           products: this.state.products,
           shoppingCart: this.state.shoppingCart,
+          user: this.state.user,
+          register: this.register,
+          logOut: this.logOut,
           addToCart: this.addToCart,
           removeFromCart: this.removeFromCart
         }}
