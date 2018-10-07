@@ -13,8 +13,12 @@ export default props => {
       <ContextConsumer>
         {({ products, addToCart }) =>
           products.map(p => (
-            <React.Fragment>
-              <Product.Thumbnail key={p.name} product={p} />
+            <React.Fragment key={p.name}>
+              <Product.Thumbnail
+                addToCart={addToCart}
+                key={p.name}
+                product={p}
+              />
 
               <Route
                 key={p.id}

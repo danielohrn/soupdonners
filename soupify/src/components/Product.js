@@ -3,16 +3,37 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ArrowIcon from "../assets/ArrowIcon";
 
-const Thumbnail = ({ product: { name, img, price, id } }) => {
+const Thumbnail = ({addToCart, product: { name, img, price, id } }) => {
   const slug = name.replace(/\s/gi, "-").toLowerCase();
 
   return (
-    <div style={{ width: "48%", margin: "0 1%", maxWidth: "400px" }}>
+    <div
+      style={{
+        width: "48%",
+        maxHeight: '400px',
+        margin: "5px 1%",
+        maxWidth: "400px",
+        border: '1px solid lightgreen',
+        boxSizing: 'border-box'
+      }}
+    >
       <Link to={"/products/" + slug}>
-        <img src={img} alt={name} style={{ width: "100%", height: "auto" }} />
+        <div style={{ width: "auto", height: "50%", overflow: 'hidden'}}>
+          <img src={img} alt={name} style={{ width: "100%", height: "auto" }} />
+        </div>
+      </Link>
+      <div style={{ padding: '0 .5em'}}>
         <p>{name}</p>
         <p>{price} kr</p>
-      </Link>
+        <button onClick={() => addToCart(id)}>
+          Lägg till i varukorgen
+        </button>
+        <Link to={"/products/" + slug}>
+          <button>
+            Detaljer
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
@@ -49,7 +70,7 @@ const Expanded = ({
         />
       </Link>
 
-      <img src={img} style={{ width: 500 }} />
+      <img src={img} alt={name} style={{ width: 500 }} />
       <p>{name}</p>
       <p>{price} kr</p>
       <p>{description}</p>

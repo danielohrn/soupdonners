@@ -24,21 +24,35 @@ export default class ContextProvider extends Component {
     }
   };
 
+  removeFromCart = id => {
+    const shoppingCart = { ...this.state.shoppingCart };
+
+    // find product with matching id and remove it
+    let index;
+    for (let i = 0; i < shoppingCart.items.length; ++i) {
+      if (shoppingCart.items[i].id === id) {
+        index = i;
+        shoppingCart.items.splice(index, 1);
+        break;
+      }
+    }
+
+    this.setState({ shoppingCart }, this.updateOrderSummary);
+  };
+
   updateOrderSummary = () => {
     const shoppingCart = { ...this.state.shoppingCart };
-    shoppingCart.orderSummary = shoppingCart.items.reduce(
-      (summary, item) => {
-        if (!summary[item.name]) {
-          summary[item.name] = 0;
-        }
+    const SUMMARY = { total: 0 };
+    shoppingCart.orderSummary = shoppingCart.items.reduce((summary, item) => {
+      if (!summary[item.name]) {
+        summary[item.name] = { quantity: 0, ...item };
+      }
 
-        summary[item.name]++;
-        summary.total += item.price;
+      summary[item.name].quantity++;
+      summary.total += item.price;
 
-        return summary;
-      },
-      { total: 0 }
-    );
+      return summary;
+    }, SUMMARY);
 
     this.setState({ shoppingCart });
   };
@@ -49,7 +63,8 @@ export default class ContextProvider extends Component {
         value={{
           products: this.state.products,
           shoppingCart: this.state.shoppingCart,
-          addToCart: this.addToCart
+          addToCart: this.addToCart,
+          removeFromCart: this.removeFromCart
         }}
       >
         {this.props.children}
