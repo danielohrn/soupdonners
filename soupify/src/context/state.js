@@ -52,7 +52,7 @@ const state = {
       price: 99,
       description: "Soppan är god bror",
       img:
-        "https://www.fastkitchen.net/wp-content/uploads/2017/01/Tumeric-Soup.jpg"
+        "https://www.landleyskok.se/wp-content/uploads/2016/04/sockerartssoppa-0D5A6253.jpg"
     }
   ],
 
