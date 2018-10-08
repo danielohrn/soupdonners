@@ -5,6 +5,7 @@ import ProductsPage from "./pages/ProductsPage";
 import ShoppingCart from "./pages/ShoppingCart";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 const routes = [
   {
@@ -46,7 +47,7 @@ const routes = [
   {
     slug: "/checkout",
     name: "Checkout",
-    component: () => <h1>Checkout</h1>,
+    component: CheckoutPage,
     exact: false
   },
   {

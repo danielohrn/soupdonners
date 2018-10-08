@@ -1,13 +1,6 @@
-import images from '../libs/images'
+import images from "../libs/images";
 
-let {soup1,
-    soup2,
-    soup3,
-    soup4,
-    soup5,
-    soup6
-    } = images
-
+let { soup1, soup2, soup3, soup4, soup5, soup6 } = images;
 
 const generateId = (() => {
   let id = 0;
