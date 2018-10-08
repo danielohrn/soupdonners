@@ -7,7 +7,12 @@ export default () => {
   return (
     <div>
       <Consumer>
-        {({ addToCart, removeFromCart, shoppingCart: { orderSummary } }) => {
+        {({
+          addToCart,
+          removeFromCart,
+          removeAllProductTypesFromCart,
+          shoppingCart: { orderSummary }
+        }) => {
           const { total, ...products } = orderSummary;
           return (
             <div>
@@ -20,6 +25,9 @@ export default () => {
                       product={products[product]}
                       addToCart={addToCart}
                       removeFromCart={removeFromCart}
+                      removeAllProductTypesFromCart={
+                        removeAllProductTypesFromCart
+                      }
                     />
                   ))}
               </ul>
