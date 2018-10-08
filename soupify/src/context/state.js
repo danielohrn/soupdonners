@@ -1,3 +1,14 @@
+import images from '../libs/images'
+
+let {soup1,
+    soup2,
+    soup3,
+    soup4,
+    soup5,
+    soup6
+    } = images
+
+
 const generateId = (() => {
   let id = 0;
 
@@ -11,48 +22,42 @@ const state = {
       id: generateId(),
       price: 99,
       description: "Soppan är god bror",
-      img:
-        "https://img.taste.com.au/Or7eNTpJ/taste/2016/11/roast-tomato-and-basil-soup-47489-1.jpeg"
+      img: soup1
     },
     {
       name: "Höstsoppa",
       id: generateId(),
       price: 99,
       description: "Soppan är god bror",
-      img:
-        "http://aucdn.ar-cdn.com/recipes/port500/003b2bf5-a680-428b-80bd-b2a1de9eb2ac.jpg"
+      img: soup2
     },
     {
       name: "Varm soppa",
       id: generateId(),
       price: 99,
       description: "Soppan är god bror",
-      img:
-        "https://www.healthyfood.co.uk/wp-content/uploads/2017/10/pea-and-fennel-soup-1.png"
+      img: soup3
     },
     {
       name: "Kall soppa",
       id: generateId(),
       price: 99,
       description: "Soppan är god bror",
-      img:
-        "https://www.eatlivetravelwrite.com/wp-content/uploads/2012/04/DSC_2302.jpg"
+      img: soup4
     },
     {
       name: "Bränd soppa",
       id: generateId(),
       price: 99,
       description: "Soppan är god bror",
-      img:
-        "http://foodhati.com/foodhatiAdmin/assets/img/foodimg/201308-ft-tomato-soup-with-chickpeas-and-pasta.jpg"
+      img: soup5
     },
     {
       name: "Nice soppa",
       id: generateId(),
       price: 99,
       description: "Soppan är god bror",
-      img:
-        "https://www.fastkitchen.net/wp-content/uploads/2017/01/Tumeric-Soup.jpg"
+      img: soup6
     }
   ],
 
