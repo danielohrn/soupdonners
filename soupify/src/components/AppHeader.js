@@ -10,7 +10,8 @@ const AppHeader = () => (
     style={{
       display: "flex",
       flexDirection: "column",
-      padding: "20px 0"
+      padding: "20px",
+      boxShadow: "1px 1px 4px 0px lightgrey"
     }}
   >
     <div

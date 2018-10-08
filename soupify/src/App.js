@@ -22,10 +22,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <ContextProvider>
           <AppHeader />
-          {this.pageRoutes()}
+          <div className="App">
+            {this.pageRoutes()}
+          </div>
         </ContextProvider>
       </div>
     );
