@@ -14,8 +14,8 @@ export default ({ amount }) => (
     <div>
       <svg
         style={{
-          transform: "rotateY(180deg) scale(1.5)",
-          padding: "0 10px"
+          transform: "rotateY(180deg) scale(1.5)"
+          // padding: "0 10px"
         }}
         xmlns="http://www.w3.org/2000/svg"
         width="24"

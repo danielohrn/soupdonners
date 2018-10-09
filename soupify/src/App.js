@@ -25,9 +25,7 @@ class App extends Component {
       <div>
         <ContextProvider>
           <AppHeader />
-          <div className="App">
-            {this.pageRoutes()}
-          </div>
+          <div className="App">{this.pageRoutes()}</div>
         </ContextProvider>
       </div>
     );
