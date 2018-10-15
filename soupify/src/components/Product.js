@@ -1,5 +1,6 @@
 import React from "react";
 import { Columns as Row } from "react-bulma-components";
+import Image from 'react-bulma-components/lib/components/image';
 
 import { Link } from "react-router-dom";
 import ArrowIcon from "../assets/ArrowIcon";
@@ -10,17 +11,16 @@ const Thumbnail = ({ addToCart, product: { name, img, price, id } }) => {
   return (
     <div
       style={{
-        width: "48%",
-        maxHeight: "400px",
         margin: "5px 1%",
-        maxWidth: "400px",
         boxShadow: "lightgrey 0px 1px 1px 0px"
       }}
     >
       <Link to={"/products/" + slug}>
-        <div style={{ width: "auto", height: "50%", overflow: "hidden" }}>
-          <img src={img} alt={name} style={{ width: "100%", height: "auto" }} />
-        </div>
+        <Image
+          src={img}
+          alt={name}
+          size="3by2"
+        />
       </Link>
       <div style={{ padding: "0 .5em" }}>
         <p>{name}</p>
