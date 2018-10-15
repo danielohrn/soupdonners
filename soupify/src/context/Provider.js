@@ -38,7 +38,6 @@ export default class ContextProvider extends Component {
 
   addToCart = id => {
     const shoppingCart = { ...this.state.shoppingCart };
-
     // find product that matches with provided id
     const productToAdd = this.state.products.filter(
       product => product.id === id
@@ -46,25 +45,41 @@ export default class ContextProvider extends Component {
 
     // if product found add it to cart and update ordersummary
     if (productToAdd) {
+      console.log(id, "add");
       shoppingCart.items.push(productToAdd);
       this.setState({ shoppingCart }, this.updateOrderSummary);
+      this.showNotification();
     }
   };
 
   removeFromCart = id => {
     const shoppingCart = { ...this.state.shoppingCart };
-
     // find product with matching id and remove it
-    let index;
     for (let i = 0; i < shoppingCart.items.length; ++i) {
       if (shoppingCart.items[i].id === id) {
-        index = i;
-        shoppingCart.items.splice(index, 1);
+        shoppingCart.items.splice(i, 1);
         break;
       }
     }
 
+    console.log(id, "remove");
     this.setState({ shoppingCart }, this.updateOrderSummary);
+  };
+
+  showNotification = () => {
+    const NOTIFICATION_DURATION = 1000;
+    const DEBOUNCE_DURATION = 200;
+
+    clearTimeout(this.notificationtimeOut);
+
+    this.notificationtimeOut = setTimeout(() => {
+      this.setState({ hasNotification: true }, () => {
+        setTimeout(() => {
+          // hide notification after 1000 ms
+          this.setState({ hasNotification: false });
+        }, NOTIFICATION_DURATION);
+      });
+    }, DEBOUNCE_DURATION);
   };
 
   updateOrderSummary = () => {
@@ -95,7 +110,8 @@ export default class ContextProvider extends Component {
           logOut: this.logOut,
           addToCart: this.addToCart,
           removeFromCart: this.removeFromCart,
-          removeAllProductTypesFromCart: this.removeAllProductTypesFromCart
+          removeAllProductTypesFromCart: this.removeAllProductTypesFromCart,
+          hasNotification: this.state.hasNotification
         }}
       >
         {this.props.children}

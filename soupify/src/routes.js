@@ -1,4 +1,9 @@
 import React from "react";
+import { Route } from "react-router-dom";
+
+import ProductSummary from "./components/ProductSummary";
+import ContextConsumer from "./context/Consumer";
+import Product from "./components/Product";
 
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
@@ -57,5 +62,24 @@ const routes = [
     exact: false
   }
 ];
+
+/** Routes for single product page */
+export function ProductRoutes(props) {
+  return (
+    <ContextConsumer>
+      {({ products, addToCart }) =>
+        products.map(p => (
+          <Route
+            key={p.id}
+            path={"/products" + "/" + p.name.replace(/\s/gi, "-").toLowerCase()}
+            render={props => (
+              <Product.Expanded {...props} product={p} addToCart={addToCart} />
+            )}
+          />
+        ))
+      }
+    </ContextConsumer>
+  );
+}
 
 export default routes;

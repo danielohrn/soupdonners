@@ -2,11 +2,7 @@ import images from "../libs/images";
 
 let { soup1, soup2, soup3, soup4, soup5, soup6 } = images;
 
-const generateId = (() => {
-  let id = 0;
-
-  return () => ++id;
-})();
+const generateId = (start => () => ++start)(0);
 
 const state = {
   products: [
@@ -55,8 +51,26 @@ const state = {
   ],
 
   shoppingCart: {
-    items: [],
-    orderSummary: {}
+    items: [
+      // {
+      //   name: "Krya på dig",
+      //   id: 1,
+      //   price: 99,
+      //   description: "Soppan är god bror",
+      //   img: soup1
+      // }
+    ],
+    orderSummary: {
+      // "Krya på dig": {
+      //   name: "Krya på dig",
+      //   id: 1,
+      //   price: 99,
+      //   description: "Soppan är god bror",
+      //   img: soup1,
+      //   quantity: 1
+      // },
+      total: 0
+    }
   },
 
   user: {
@@ -65,7 +79,9 @@ const state = {
       name: null,
       email: null
     }
-  }
+  },
+
+  hasNotification: false
 };
 
 export default state;

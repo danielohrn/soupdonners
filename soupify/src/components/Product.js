@@ -1,37 +1,33 @@
 import React from "react";
+import { Columns as Row } from "react-bulma-components";
 
 import { Link } from "react-router-dom";
 import ArrowIcon from "../assets/ArrowIcon";
 
-const Thumbnail = ({addToCart, product: { name, img, price, id } }) => {
+const Thumbnail = ({ addToCart, product: { name, img, price, id } }) => {
   const slug = name.replace(/\s/gi, "-").toLowerCase();
 
   return (
     <div
       style={{
         width: "48%",
-        maxHeight: '400px',
+        maxHeight: "400px",
         margin: "5px 1%",
         maxWidth: "400px",
-        border: '1px solid lightgreen',
-        boxSizing: 'border-box'
+        boxShadow: "lightgrey 0px 1px 1px 0px"
       }}
     >
       <Link to={"/products/" + slug}>
-        <div style={{ width: "auto", height: "50%", overflow: 'hidden'}}>
+        <div style={{ width: "auto", height: "50%", overflow: "hidden" }}>
           <img src={img} alt={name} style={{ width: "100%", height: "auto" }} />
         </div>
       </Link>
-      <div style={{ padding: '0 .5em'}}>
+      <div style={{ padding: "0 .5em" }}>
         <p>{name}</p>
         <p>{price} kr</p>
-        <button onClick={() => addToCart(id)}>
-          Lägg till i varukorgen
-        </button>
+        <button onClick={() => addToCart(id)}>Lägg till i varukorgen</button>
         <Link to={"/products/" + slug}>
-          <button>
-            Detaljer
-          </button>
+          <button>Detaljer</button>
         </Link>
       </div>
     </div>
