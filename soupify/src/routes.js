@@ -1,7 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import ProductSummary from "./components/ProductSummary";
 import ContextConsumer from "./context/Consumer";
 import Product from "./components/Product";
 
@@ -11,6 +10,8 @@ import ShoppingCart from "./pages/ShoppingCart";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import CheckoutPage from "./pages/CheckoutPage";
+
+import NoSoupForYou_404 from "./pages/404";
 
 const routes = [
   {
@@ -23,7 +24,7 @@ const routes = [
     slug: "/products",
     name: "Products",
     component: ProductsPage,
-    exact: false
+    exact: true
   },
   {
     slug: "/cart",
@@ -60,6 +61,14 @@ const routes = [
     name: "Admin",
     component: () => <h1>Admin</h1>,
     exact: false
+  },
+
+  {
+    /** 404 not found */
+    slug: null,
+    name: null,
+    component: NoSoupForYou_404,
+    exact: null
   }
 ];
 
@@ -71,7 +80,7 @@ export function ProductRoutes(props) {
         products.map(p => (
           <Route
             key={p.id}
-            path={"/products" + "/" + p.name.replace(/\s/gi, "-").toLowerCase()}
+            path={"/products/" + p.name.replace(/\s/gi, "-").toLowerCase()}
             render={props => (
               <Product.Expanded {...props} product={p} addToCart={addToCart} />
             )}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import { ProductRoutes } from "./routes";
 import PostCodeForm from "./components/PostCodeForm";
@@ -29,7 +29,7 @@ class App extends Component {
           <div className="App">
             <PostCodeForm />
             <ProductRoutes />
-            {this.pageRoutes()}
+            <Switch>{this.pageRoutes()}</Switch>
           </div>
         </ContextProvider>
       </div>
