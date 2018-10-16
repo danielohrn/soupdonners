@@ -1,13 +1,35 @@
 import React from "react";
-import { Columns as Row } from "react-bulma-components";
-import Image from 'react-bulma-components/lib/components/image';
-
 import { Link } from "react-router-dom";
+import Image from "react-bulma-components/lib/components/image";
+
 import ArrowIcon from "../assets/ArrowIcon";
+import { PRIMARY_GREEN } from "../constants";
 
-const Thumbnail = ({ addToCart, product: { name, img, price, id } }) => {
+import AddonPicker from "./AddonPicker";
+import NotificationTrigger from "./NotificationTrigger";
+
+const ProductTagsList = ({ tags }) => {
+  return (
+    <ul style={{ display: "flex", color: "white" }}>
+      {tags.map(tagName => (
+        <li
+          key={tagName}
+          style={{
+            marginRight: 5,
+            padding: "5px",
+            borderRadius: "5px",
+            background: PRIMARY_GREEN
+          }}
+        >
+          {tagName}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const Thumbnail = ({ addToCart, product: { name, img, price, id, tags } }) => {
   const slug = name.replace(/\s/gi, "-").toLowerCase();
-
   return (
     <div
       style={{
@@ -16,20 +38,24 @@ const Thumbnail = ({ addToCart, product: { name, img, price, id } }) => {
       }}
     >
       <Link to={"/products/" + slug}>
-        <Image
-          src={img}
-          alt={name}
-          size="3by2"
-        />
+        <Image src={img} alt={name} size="3by2" />
       </Link>
-      <div style={{ padding: "0 .5em" }}>
-        <p>{name}</p>
-        <p>{price} kr</p>
-        <button onClick={() => addToCart(id)}>Lägg till i varukorgen</button>
-        <Link to={"/products/" + slug}>
-          <button>Detaljer</button>
-        </Link>
-      </div>
+      <p>{name}</p>
+      <p>{price} kr</p>
+      <NotificationTrigger message={name + " tillagd i varukorgen!"}>
+        <button
+          className="button"
+          style={{ margin: "3px 0" }}
+          onClick={() => addToCart(id)}
+        >
+          Lägg till i varukorgen
+        </button>
+      </NotificationTrigger>
+      <Link to={"/products/" + slug}>
+        <button className="button">Detaljer</button>
+      </Link>
+      <ProductTagsList tags={tags} />
+      <AddonPicker />
     </div>
   );
 };
@@ -70,8 +96,10 @@ const Expanded = ({
       <p>{name}</p>
       <p>{price} kr</p>
       <p>{description}</p>
-
-      <button onClick={() => addToCart(id)}>Lägg till i varukorg</button>
+      <NotificationTrigger message={name + " tillagd i varukorgen!"}>
+        <button onClick={() => addToCart(id)}>Lägg till i varukorg</button>
+      </NotificationTrigger>
+      <AddonPicker />
     </div>
   );
 };

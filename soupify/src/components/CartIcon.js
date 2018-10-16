@@ -6,7 +6,7 @@ export default ({ amount }) => (
   <Link
     to={"/cart"}
     style={{
-      zIndex: 1,
+      zIndex: 2,
       display: "flex",
       justifyContent: "space-around",
       alignItems: "center",

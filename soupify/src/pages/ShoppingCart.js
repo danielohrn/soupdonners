@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Consumer from "../context/Consumer";
 import ProductSummary from "../components/ProductSummary";
 import { Columns } from "react-bulma-components";
+import AddonPicker from "../components/AddonPicker";
 
 export default () => {
   return (
@@ -12,8 +13,7 @@ export default () => {
           addToCart,
           removeFromCart,
           removeAllProductTypesFromCart,
-          shoppingCart: { orderSummary },
-          hasNotification
+          shoppingCart: { orderSummary }
         }) => {
           const { total, ...products } = orderSummary;
           return (
@@ -30,7 +30,6 @@ export default () => {
                       removeAllProductTypesFromCart={
                         removeAllProductTypesFromCart
                       }
-                      hasNotification={hasNotification}
                     />
                   ))}
                 {total ? (
@@ -48,6 +47,7 @@ export default () => {
                       background: "white"
                     }}
                   >
+                    <AddonPicker />
                     <span className="has-text-weight-bold">
                       Total kostnad: {total} kr
                     </span>

@@ -2,7 +2,7 @@ import React from "react";
 import { Columns } from "react-bulma-components";
 
 const ProductSummary = ({
-  product: { quantity, name, img, price, id, description },
+  product: { quantity, name, img, price, id, description, type },
   addToCart,
   removeFromCart,
   removeAllProductTypesFromCart
@@ -33,13 +33,23 @@ const ProductSummary = ({
           </button>
         </Columns.Column>
         <Columns.Column size={"half"}>
-          <button className="button" onClick={() => removeFromCart(id)}>
+          <button
+            className="button"
+            onClick={() =>
+              removeFromCart(id, type === "side" ? "sides" : "products")
+            }
+          >
             -
           </button>
           <span style={{ display: "inline-block", margin: ".5em" }}>
             {quantity}
           </span>
-          <button className="button" onClick={() => addToCart(id)}>
+          <button
+            className="button"
+            onClick={() =>
+              addToCart(id, type === "side" ? "sides" : "products")
+            }
+          >
             +
           </button>
         </Columns.Column>

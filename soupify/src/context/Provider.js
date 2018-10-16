@@ -36,10 +36,10 @@ export default class ContextProvider extends Component {
     });
   };
 
-  addToCart = id => {
+  addToCart = (id, PRODUCT_TYPE = "products") => {
     const shoppingCart = { ...this.state.shoppingCart };
-    // find product that matches with provided id
-    const productToAdd = this.state.products.filter(
+    // find product that matches with provided id and product type
+    const productToAdd = this.state[PRODUCT_TYPE].filter(
       product => product.id === id
     )[0];
 
@@ -48,7 +48,7 @@ export default class ContextProvider extends Component {
       console.log(id, "add");
       shoppingCart.items.push(productToAdd);
       this.setState({ shoppingCart }, this.updateOrderSummary);
-      this.showNotification();
+      // this.showNotification();
     }
   };
 
@@ -64,22 +64,6 @@ export default class ContextProvider extends Component {
 
     console.log(id, "remove");
     this.setState({ shoppingCart }, this.updateOrderSummary);
-  };
-
-  showNotification = () => {
-    const NOTIFICATION_DURATION = 1000;
-    const DEBOUNCE_DURATION = 200;
-
-    clearTimeout(this.notificationtimeOut);
-
-    this.notificationtimeOut = setTimeout(() => {
-      this.setState({ hasNotification: true }, () => {
-        setTimeout(() => {
-          // hide notification after 1000 ms
-          this.setState({ hasNotification: false });
-        }, NOTIFICATION_DURATION);
-      });
-    }, DEBOUNCE_DURATION);
   };
 
   updateOrderSummary = () => {
@@ -104,14 +88,14 @@ export default class ContextProvider extends Component {
       <AppContext.Provider
         value={{
           products: this.state.products,
+          sides: this.state.sides,
           shoppingCart: this.state.shoppingCart,
           user: this.state.user,
           register: this.register,
           logOut: this.logOut,
           addToCart: this.addToCart,
           removeFromCart: this.removeFromCart,
-          removeAllProductTypesFromCart: this.removeAllProductTypesFromCart,
-          hasNotification: this.state.hasNotification
+          removeAllProductTypesFromCart: this.removeAllProductTypesFromCart
         }}
       >
         {this.props.children}

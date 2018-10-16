@@ -1,8 +1,8 @@
 import React from "react";
 import { PRIMARY_GREEN } from "../constants";
 
-const NotificationArea = ({ showIf, message, placement = "TOP" }) => {
-  return showIf ? (
+const Notification = ({ message, placement = "TOP" }) => {
+  return (
     <div
       style={{
         position: "fixed",
@@ -17,12 +17,13 @@ const NotificationArea = ({ showIf, message, placement = "TOP" }) => {
         alignItems: "center",
         color: PRIMARY_GREEN,
         background: "white",
-        animation: "swoosh .3s ease"
+        animation: "swoosh .3s ease",
+        zIndex: 1
       }}
     >
       {message}
     </div>
-  ) : null;
+  );
 };
 
-export default NotificationArea;
+export default Notification;
