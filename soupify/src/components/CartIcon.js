@@ -40,7 +40,7 @@ export default class CartIcon extends React.Component {
           style={{
             fill: "white",
             animation:
-              amount > 0 && shouldSpin ? "bouncy .5s forwards .2  s" : null
+              amount > 0 && shouldSpin ? "bouncy .5s forwards .2s" : null
           }}
           xmlns="http://www.w3.org/2000/svg"
           width="40"
