@@ -4,15 +4,26 @@ import NotificationTrigger from "./NotificationTrigger";
 
 export default class AddonPicker extends React.Component {
   state = {
-    isExpanded: false
+    isExpanded: this.props.expanded || false
   };
 
   render() {
     const { isExpanded } = this.state;
+    const { showHeader } = this.props;
     return (
-      <div>
-        <p onClick={() => this.setState({ isExpanded: !isExpanded })}>
-          {"Tillbehör " + (isExpanded ? "-" : "+")}
+      <div
+        style={{
+          cursor: "pointer",
+          margin: "10px 0"
+          // boxShadow: "lightgrey 0px 1px 1px 0px"
+        }}
+      >
+        <p
+          style={{ marginLeft: 0 }}
+          className="has-text-weight-semibold"
+          onClick={() => this.setState({ isExpanded: !isExpanded })}
+        >
+          {showHeader ? "Tillbehör " + (isExpanded ? "-" : "+") : null}
         </p>
         {isExpanded ? (
           <ul>
@@ -20,18 +31,35 @@ export default class AddonPicker extends React.Component {
               {({ addToCart, sides }) =>
                 sides.map(side => (
                   <li
+                    key={side.name}
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      justifyContent: "space-betwween"
+                      justifyContent: "space-between"
                     }}
                   >
-                    <img alt={side.name} style={{ width: 50 }} src={side.img} />
-                    {side.name} {side.price} kr
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center"
+                      }}
+                    >
+                      <img
+                        alt={side.name}
+                        style={{ width: 50 }}
+                        src={side.img}
+                      />
+                      <span style={{ margin: "0 10px" }}>{side.name}</span>
+                      <b>{side.price} kr</b>
+                    </div>
                     <NotificationTrigger
                       message={side.name + " tillagd i varukorgen!"}
                     >
-                      <button onClick={() => addToCart(side.id, "sides")}>
+                      <button
+                        style={{ margin: "0 10px" }}
+                        className="button is-small"
+                        onClick={() => addToCart(side.id, "sides")}
+                      >
                         Lägg till
                       </button>
                     </NotificationTrigger>

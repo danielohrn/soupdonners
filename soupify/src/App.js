@@ -23,16 +23,13 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <ContextProvider>
-          <Navbar />
-          <div className="App">
-            <PostCodeForm />
-            <ProductRoutes />
-            <Switch>{this.pageRoutes()}</Switch>
-          </div>
-        </ContextProvider>
-      </div>
+      <ContextProvider>
+        <Navbar />
+        <div /*className="App"*/>
+          <ProductRoutes />
+          <Switch>{this.pageRoutes()}</Switch>
+        </div>
+      </ContextProvider>
     );
   }
 }

@@ -28,7 +28,7 @@ const Navbar = () => (
       <ContextConsumer>
         {({ shoppingCart: { items }, user: { isSignedIn, info } }) => (
           <nav style={{ display: "flex", paddingRight: 55 }}>
-            <Link
+            {/* <Link
               to={isSignedIn ? "/profile" : "/register"}
               style={{ margin: ".5px 10px" }}
             >
@@ -40,7 +40,7 @@ const Navbar = () => (
               ) : (
                 "Logga in"
               )}
-            </Link>
+            </Link> */}
             <ShoppingCartIcon amount={items.length} />
           </nav>
         )}

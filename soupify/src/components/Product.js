@@ -1,32 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Image from "react-bulma-components/lib/components/image";
-
 import ArrowIcon from "../assets/ArrowIcon";
 import { PRIMARY_GREEN } from "../constants";
-
+import ProductTagsList from "./ProductTagsList";
 import AddonPicker from "./AddonPicker";
 import NotificationTrigger from "./NotificationTrigger";
-
-const ProductTagsList = ({ tags }) => {
-  return (
-    <ul style={{ display: "flex", color: "white" }}>
-      {tags.map(tagName => (
-        <li
-          key={tagName}
-          style={{
-            marginRight: 5,
-            padding: "5px",
-            borderRadius: "5px",
-            background: PRIMARY_GREEN
-          }}
-        >
-          {tagName}
-        </li>
-      ))}
-    </ul>
-  );
-};
 
 const Thumbnail = ({ addToCart, product: { name, img, price, id, tags } }) => {
   const slug = name.replace(/\s/gi, "-").toLowerCase();
@@ -40,22 +19,44 @@ const Thumbnail = ({ addToCart, product: { name, img, price, id, tags } }) => {
       <Link to={"/products/" + slug}>
         <Image src={img} alt={name} size="3by2" />
       </Link>
-      <p>{name}</p>
-      <p>{price} kr</p>
-      <NotificationTrigger message={name + " tillagd i varukorgen!"}>
-        <button
-          className="button"
-          style={{ margin: "3px 0" }}
-          onClick={() => addToCart(id)}
+
+      <div
+        style={{
+          padding: "10px"
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            margin: "10px 0",
+            flexWrap: "wrap"
+          }}
         >
-          Lägg till i varukorgen
-        </button>
-      </NotificationTrigger>
-      <Link to={"/products/" + slug}>
-        <button className="button">Detaljer</button>
-      </Link>
-      <ProductTagsList tags={tags} />
-      <AddonPicker />
+          <div>
+            <p>{name}</p>
+            <p style={{ fontSize: "1.5em" }}>{price} kr</p>
+          </div>
+          <div>
+            <NotificationTrigger message={name + " tillagd i varukorgen!"}>
+              <button
+                className="button"
+                style={{
+                  margin: "3px 0",
+                  background: PRIMARY_GREEN,
+                  color: "white"
+                }}
+                onClick={() => addToCart(id)}
+              >
+                Lägg till i varukorgen
+              </button>
+            </NotificationTrigger>
+            <Link to={"/products/" + slug}>Detaljer</Link>
+          </div>
+        </div>
+        {/* <ProductTagsList tags={tags} /> */}
+        <AddonPicker />
+      </div>
     </div>
   );
 };

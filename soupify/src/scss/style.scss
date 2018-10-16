@@ -4,3 +4,30 @@
 a {
     color: inherit; 
 }
+
+$soup_pic      : "https://boktowergardens.org/wp-content/uploads/2017/08/broth-based-soups-header.jpg"; 
+$soup_pic_alt  : "https://scstylecaster.files.wordpress.com/2016/10/fall-soups.jpg"; 
+$PRIMARY_GREEN : #219653;
+
+.hero-background {
+    background-image: url($soup_pic_alt); 
+    background-size: 100% auto;
+    background-position-y: -95px;
+    background-repeat: no-repeat; 
+
+    h1 {
+        color: white;
+        background: $PRIMARY_GREEN;
+        padding: 0 .5em; 
+        display: inline-block;
+        font-size: 5vw; 
+    }
+
+}
+
+@media (max-width: 650px) {
+    .hero-background {
+        background-size: 800px auto;
+        background-position-x: -95px;
+    }
+}

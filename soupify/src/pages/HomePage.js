@@ -1,57 +1,98 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { flexCenter, h2 } from "../styles";
+import Hero from "react-bulma-components/lib/components/hero";
+import Section from "react-bulma-components/lib/components/section";
+import Heading from "react-bulma-components/lib/components/heading";
+import Button from "react-bulma-components/lib/components/button";
+import PostCodeForm from "../components/PostCodeForm";
+import { STEPS } from "../libs/images";
 
 export default class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <h1 style={{ textAlign: "center" }}>Hur fungerar det?</h1>
-
-        <Row>
-          <Column>
-            <img
-              alt="bruh"
-              style={{ width: "60%", height: "auto" }}
-              src="https://travelshop.se/wp-content/uploads/2017/12/Suspended-soppa-e1523262072796.jpg"
-            />
-          </Column>
-          <Column>
-            <h2 style={h2}>Välj soppa</h2>
-          </Column>
-        </Row>
-        <Row>
-          <Column>
-            <h2 style={h2}>
-              Beställ soppa till dig själv eller som en gåva till nära och kära
-            </h2>
-          </Column>
-          <Column>
-            <img
-              alt="bruh"
-              style={{ width: "60%", height: "auto" }}
-              src="https://www.technobezz.com/files/uploads/2017/12/Door-Dash.png"
-            />
-          </Column>
-        </Row>
-        <Row>
-          <Column>
-            <img
-              alt="bruh"
-              style={{ width: "60%", height: "auto" }}
-              src="https://i2.wp.com/techbizweb.com/wp-content/uploads/2017/01/What-Seperates-Uber-from-a-Taxi-and-How-to-Use-the-Uber-App.gif?fit=400%2C700"
-            />
-          </Column>
-          <Column>
-            <h2 style={h2}>Följ din leverans</h2>
-          </Column>
-        </Row>
+        <HeroSection />
+        <HowDoesItWork />
       </div>
     );
   }
 }
 
+const HeroSection = () => {
+  return (
+    <Section className="hero-background">
+      <Hero>
+        <Hero.Body>
+          <Heading>Hälsosamma soppor hem till dig</Heading>
+          <br />
+          <PostCodeForm />
+          <Link to={"/products"}>
+            <Button>Se vår meny</Button> <br />
+          </Link>
+        </Hero.Body>
+      </Hero>
+    </Section>
+  );
+};
+
+const HowDoesItWork = () => {
+  return (
+    <Section>
+      <h1 className="title" style={{ textAlign: "center" }}>
+        Hur fungerar det?
+      </h1>
+      <Row>
+        <Column>
+          <img
+            alt="step-1"
+            style={{ width: "60%", height: "auto" }}
+            src={STEPS["1"]}
+          />
+        </Column>
+        <Column>
+          <h2 style={h2}>Välj en av våra hälsomsamma soppor</h2>
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          <h2 style={h2}>
+            Beställ soppa till dig själv eller som en gåva till nära och kära
+          </h2>
+        </Column>
+        <Column>
+          <img
+            alt="step-2"
+            style={{ width: "60%", height: "auto" }}
+            src={STEPS["2"]}
+          />
+        </Column>
+      </Row>
+      <Row>
+        <Column>
+          <img
+            alt="step-3"
+            style={{ width: "60%", height: "auto" }}
+            src={STEPS["3"]}
+          />
+        </Column>
+        <Column>
+          <h2 style={h2}>Ta emot din leverans och njut</h2>
+        </Column>
+      </Row>
+    </Section>
+  );
+};
+
 const Row = ({ children }) => (
-  <div style={{ display: "flex", maxWidth: "500px", margin: "0 auto" }}>
+  <div
+    style={{
+      display: "flex",
+      maxWidth: "500px",
+      margin: "0 auto",
+      padding: "30px 0"
+    }}
+  >
     {children}
   </div>
 );

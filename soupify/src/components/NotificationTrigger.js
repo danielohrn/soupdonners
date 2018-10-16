@@ -21,6 +21,10 @@ export default class NotificationTrigger extends Component {
     }, DEBOUNCE_DURATION);
   };
 
+  componentWillMount() {
+    clearTimeout(this.notificationtimeOut);
+  }
+
   render() {
     const { active } = this.state;
     return (
