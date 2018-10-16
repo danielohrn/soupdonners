@@ -9,10 +9,10 @@ a {
 
 @keyframes bouncy {
   from {
-    transform: translateY(0); 
+    transform: rotate(0); 
   }
   to {
-    transform: translateY(3px); 
+    transform: rotate(360deg); 
   }
 }
 

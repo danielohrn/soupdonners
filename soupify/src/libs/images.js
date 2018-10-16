@@ -12,3 +12,5 @@ export var STEPS = {
   "2": require("../assets/img/step-2.png"),
   "3": require("../assets/img/step-3.png")
 };
+
+export const LOGOTYPE = require("../assets/img/soupify-logo.png");

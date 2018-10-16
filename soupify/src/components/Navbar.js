@@ -4,13 +4,14 @@ import ShoppingCartIcon from "./CartIcon";
 import ContextConsumer from "../context/Consumer";
 import ProfileIcon from "../assets/ProfileIcon";
 import { PRIMARY_GREEN } from "../constants";
+import { LOGOTYPE } from "../libs/images";
 
 const Navbar = () => (
   <header
     style={{
       display: "flex",
       flexDirection: "column",
-      padding: "15px",
+      padding: "5px",
       background: PRIMARY_GREEN,
       color: "white"
     }}
@@ -18,13 +19,14 @@ const Navbar = () => (
     <div
       style={{
         display: "flex",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        alignItems: "center"
       }}
     >
+      MENY?
       <Link style={{ color: "inherit" }} to={"/"}>
-        Soppogram
+        <img src={LOGOTYPE} style={{ width: 40 }} />
       </Link>
-
       <ContextConsumer>
         {({ shoppingCart: { items }, user: { isSignedIn, info } }) => (
           <nav style={{ display: "flex", paddingRight: 55 }}>
