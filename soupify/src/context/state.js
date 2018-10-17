@@ -8,11 +8,12 @@ const state = {
   products: {
     soups: [
       {
-        name: "Krya på dig",
+        name: "Värmande morotsoppa med ingefära och chili",
         type: "soups",
         id: generateId(),
         price: 99,
-        description: "Soppan är god bror",
+        description:
+          "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: [TAGS.FISH, TAGS.GLUTEN_FREE, TAGS.SPICY],
         img: soup1
       },
@@ -21,37 +22,38 @@ const state = {
         type: "soups",
         id: generateId(),
         price: 99,
-        description: "Soppan är god bror",
+        description:
+          "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: [TAGS.VEGETARIAN, TAGS.GLUTEN_FREE],
-        img:
-          "https://www.brandnewvegan.com/wp-content/uploads/2015/07/sweet-potato-soup.jpg"
+        img: soup2
       },
       {
         name: "Varm soppa",
         type: "soups",
         id: generateId(),
         price: 99,
-        description: "Soppan är god bror",
+        description:
+          "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: [TAGS.FISH],
-        img:
-          "http://girlandthekitchen.com/wp-content/uploads/2009/01/Persian-Lentil-Soup-3-of-4.jpg"
+        img: soup3
       },
       {
         name: "Kall soppa",
         type: "soups",
         id: generateId(),
         price: 99,
-        description: "Soppan är god bror",
+        description:
+          "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: [TAGS.GLUTEN_FREE],
-        img:
-          "https://realfood.tesco.com/media/images/RFO-1400x919--cdb61265-c5a8-4297-b243-e335ad51d3d8-0-1400x919.jpg"
+        img: soup4
       },
       {
         name: "Bränd soppa",
         type: "soups",
         id: generateId(),
         price: 99,
-        description: "Soppan är god bror",
+        description:
+          "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: [TAGS.FISH],
         img: soup5
       },
@@ -60,10 +62,10 @@ const state = {
         type: "soups",
         id: generateId(),
         price: 99,
-        description: "Soppan är god bror",
+        description:
+          "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: [TAGS.SPICY],
-        img:
-          "https://img.delicious.com.au/iB6OGNth/h506-w759-cfill/del/2018/04/pumpkin-pear-and-bacon-soup-77439-2.jpg"
+        img: soup6
       }
     ],
 

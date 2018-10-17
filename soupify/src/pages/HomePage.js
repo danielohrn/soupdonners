@@ -7,7 +7,7 @@ import Columns from "react-bulma-components/lib/components/columns";
 import Heading from "react-bulma-components/lib/components/heading";
 import Button from "react-bulma-components/lib/components/button";
 import PostCodeForm from "../components/PostCodeForm";
-import { STEPS } from "../libs/images";
+import { STEPS, heroVideo } from "../libs/images";
 
 export default class HomePage extends React.Component {
   render() {
@@ -28,6 +28,18 @@ export default class HomePage extends React.Component {
 const HeroSection = () => {
   return (
     <Section className="hero-background">
+      {/* <video
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          top: 0,
+          left: 0
+        }}
+        src={heroVideo}
+        autoPlay
+        loop
+      /> */}
       <Hero>
         <Hero.Body>
           <Heading>Hälsosamma soppor hem till dig</Heading>

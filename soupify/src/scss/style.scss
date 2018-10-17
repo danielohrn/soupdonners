@@ -5,15 +5,16 @@ a {
     color: inherit; 
 }
 
-$soup_pic      : "https://boktowergardens.org/wp-content/uploads/2017/08/broth-based-soups-header.jpg"; 
-$soup_pic_alt  : "https://scstylecaster.files.wordpress.com/2016/10/fall-soups.jpg"; 
+$soup_pic  : "https://scstylecaster.files.wordpress.com/2016/10/fall-soups.jpg"; 
 $PRIMARY_GREEN : #219653;
 
 .hero-background {
-    background-image: url($soup_pic_alt); 
+    background-image: url($soup_pic); 
     // background-size: 100% auto;
     background-position-y: -95px;
     background-repeat: no-repeat; 
+
+    position: relative;
 
     h1 {
         color: white;

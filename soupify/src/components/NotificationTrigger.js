@@ -28,7 +28,7 @@ export default class NotificationTrigger extends Component {
   render() {
     const { active } = this.state;
     return (
-      <div onClick={this.showNotification}>
+      <div onClick={this.showNotification} style={{ display: "inline" }}>
         {this.props.children}
         {active ? <Notification message={this.props.message} /> : null}
       </div>

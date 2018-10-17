@@ -25,7 +25,7 @@ const ProductSummary = ({
         </Columns.Column>
         <Columns.Column size={"half"}>
           <h2 className="has-text-weight-semibold">{name}</h2>
-          <p>{description}</p>
+          {/* <p>{description}</p> */}
           <p>{price} kr / styck</p>
         </Columns.Column>
         <Columns.Column size={"half"}>

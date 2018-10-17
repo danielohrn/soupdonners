@@ -44,7 +44,7 @@ const Thumbnail = ({
             <p style={{ fontSize: "1.5em" }}>{price} kr</p>
           </div>
           <div>
-            <NotificationTrigger message={name + " tillagd i varukorgen!"}>
+            <NotificationTrigger message={"Tillagd i varukorgen!"}>
               <button
                 className="button"
                 style={{
@@ -57,7 +57,9 @@ const Thumbnail = ({
                 Lägg till i varukorgen
               </button>
             </NotificationTrigger>
-            <Link to={"/products/" + slug}>Detaljer</Link>
+            <Link className="button is-text" to={"/products/" + slug}>
+              Läs mer om innehållet
+            </Link>
           </div>
         </div>
         {/* <ProductTagsList tags={tags} /> */}
@@ -76,17 +78,13 @@ const Expanded = ({
   return (
     <div
       style={{
-        // display: "flex",
-        // justifyContent: "center",
-        // flexDirection: "column",
-        // alignItems: "center",
         height: "100vh",
         width: "100vw",
         position: "fixed",
         top: 0,
         left: 0,
         background: "white",
-        transition: "all 1s ease",
+        overflow: "scroll",
         padding: "30px 0"
       }}
     >
@@ -101,18 +99,45 @@ const Expanded = ({
             }}
           />
         </Link>
-        <img src={img} alt={name} style={{ width: 500 }} />
-        <Heading>{name}</Heading>
-        <span>{price} kr</span>
-        <p>{description}</p>
-        <NotificationTrigger message={name + " tillagd i varukorgen!"}>
-          <button className="button" onClick={() => addToCart(id)}>
-            Lägg till i varukorg
-          </button>
-        </NotificationTrigger>
-        <ProductTagsList tags={tags} />
-        <Heading size={5}>Lägg till tillbehör</Heading>
-        <AddonPicker expanded={true} />
+        <Columns>
+          <Columns.Column>
+            <img src={img} alt={name} style={{ width: 500 }} />
+          </Columns.Column>
+
+          <Columns.Column
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between"
+            }}
+          >
+            <div>
+              <Heading style={{ marginBottom: 5 }}>{name}</Heading>
+              <ProductTagsList tags={tags} />
+              <p style={{ fontSize: 35 }} className="has-text-weight-bold">
+                {price} kr
+              </p>
+              <p style={{ marginTop: 20 }}> {description}</p>
+            </div>
+
+            <NotificationTrigger message={"Tillagd i varukorgen!"}>
+              <button
+                style={{ marginTop: 10 }}
+                className="button is-success"
+                onClick={() => addToCart(id)}
+              >
+                Lägg till i varukorg
+              </button>
+            </NotificationTrigger>
+          </Columns.Column>
+        </Columns>
+
+        <Columns breakpoint={"mobile"}>
+          <Columns.Column size={"half-tablet"}>
+            <Heading size={5}>Lägg till tillbehör</Heading>
+            <AddonPicker expanded={true} />
+          </Columns.Column>
+        </Columns>
       </Section>
     </div>
   );

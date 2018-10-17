@@ -6425,7 +6425,8 @@ a {
 .hero-background {
   background-image: url("https://scstylecaster.files.wordpress.com/2016/10/fall-soups.jpg");
   background-position-y: -95px;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  position: relative; }
   .hero-background h1 {
     color: white;
     background: #219653;
