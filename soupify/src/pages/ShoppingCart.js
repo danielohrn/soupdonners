@@ -49,7 +49,7 @@ export default () => {
                   </Columns.Column>
                   <Columns.Column size={"half"}>
                     <Columns breakpoint={"mobile"}>
-                      <Columns.Column size={"full"}>
+                      <Columns.Column size={"full"} className="payment-form">
                         <Heading size={4}>Kortuppgifter</Heading>
                         <input
                           id="payment"
@@ -126,35 +126,18 @@ const ProductsSummaryList = ({
 
 const GoToCheckoutBanner = ({ total }) => {
   return (
-    <div
-      className="checkout-banner"
-      style={
-        {
-          // position: "fixed",
-          // bottom: 0,
-          // left: 0,
-          // width: "100%",
-          // padding: "2em 1em",
-          // border: "1px solid lightgrey",
-          // display: "flex",
-          // justifyContent: "space-between",
-          // alignItems: "center",
-          // background: "white",
-          // zIndex: 1
-        }
-      }
-    >
+    <div className="checkout-banner">
       <div>
-        <Heading style={{ display: "inline", marginRight: 10 }}>
+        <Heading size={4} style={{ display: "inline", marginRight: 10 }}>
           Totalsumma
         </Heading>
-        <span style={{ fontSize: 35 }}>{total} kr</span>
+        <span style={{ fontSize: 25 }}>{total} kr</span>
       </div>
       <button
         className="button is-success is-medium"
         onClick={() => {
           if (window.innerWidth < 790) {
-            window.scroll(0, window.innerHeight);
+            window.scroll({ top: window.innerHeight, behavior: "smooth" });
           }
           document.getElementById("payment").focus();
         }}

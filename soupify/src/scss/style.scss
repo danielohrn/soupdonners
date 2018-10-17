@@ -18,7 +18,7 @@ $PRIMARY_GREEN : #219653;
 
     h1 {
         // color: white;
-        background: rgba(255,255,255,.5); //$PRIMARY_GREEN;
+        background: rgba(255,255,255,.5); 
         // padding: 0 .5em; 
         display: inline-block;
         font-size: 5vw; 
@@ -67,6 +67,11 @@ $PRIMARY_GREEN : #219653;
     }
 }
 @media (max-width: 790px) {
+
+    .column.payment-form {
+        height: 60vh;
+    }
+
     .checkout-banner {
         position: fixed;
         bottom: 0;

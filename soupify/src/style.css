@@ -6460,6 +6460,8 @@ a {
     display: none; }
 
 @media (max-width: 790px) {
+  .column.payment-form {
+    height: 60vh; }
   .checkout-banner {
     position: fixed;
     bottom: 0;
