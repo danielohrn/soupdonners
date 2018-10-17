@@ -36,10 +36,11 @@ export default class ContextProvider extends Component {
     });
   };
 
-  addToCart = (id, PRODUCT_TYPE = "products") => {
+  addToCart = (id, PRODUCT_TYPE = "soups") => {
+    console.log(PRODUCT_TYPE, "asd");
     const shoppingCart = { ...this.state.shoppingCart };
     // find product that matches with provided id and product type
-    const productToAdd = this.state[PRODUCT_TYPE].filter(
+    const productToAdd = this.state.products[PRODUCT_TYPE].filter(
       product => product.id === id
     )[0];
 

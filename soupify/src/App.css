@@ -6,6 +6,15 @@ a {
   text-decoration: none; 
 }
 
+@keyframes boing {
+  from {
+    transform: translateY(-100%); 
+  }
+  to {
+    transform: translateY(0); 
+  }
+}
+
 
 @keyframes bouncy {
   from {

@@ -76,11 +76,12 @@ const routes = [
 export function ProductRoutes(props) {
   return (
     <ContextConsumer>
-      {({ products, addToCart }) =>
-        products.map(p => (
+      {({ products: { soups }, addToCart }) =>
+        soups.map(p => (
           <Route
             key={p.id}
             path={"/products/" + p.name.replace(/\s/gi, "-").toLowerCase()}
+            exact={true}
             render={props => (
               <Product.Expanded {...props} product={p} addToCart={addToCart} />
             )}

@@ -44,8 +44,8 @@ export default () => {
               </Columns>
             ) : (
               <React.Fragment>
-                <p>Varukorgen är tom.</p>
-                <Link to={"/products"}>Gå till menyn -></Link>
+                <Heading>🥣 Varukorgen är tom.</Heading>
+                <Link to={"/products"}>Gå till menyn</Link>
               </React.Fragment>
             );
           }}

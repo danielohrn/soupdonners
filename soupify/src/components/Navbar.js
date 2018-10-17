@@ -23,7 +23,12 @@ const Navbar = () => (
         alignItems: "center"
       }}
     >
-      MENY?
+      <div>
+        <Link to={"/"}>Hem</Link>
+        <Link to={"/products"}>Meny</Link>
+        <Link to={"/login"}>Logga in</Link>
+      </div>
+
       <Link style={{ color: "inherit" }} to={"/"}>
         <img src={LOGOTYPE} style={{ width: 40 }} />
       </Link>

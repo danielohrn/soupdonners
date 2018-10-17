@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { flexCenter, h2 } from "../styles";
 import Hero from "react-bulma-components/lib/components/hero";
 import Section from "react-bulma-components/lib/components/section";
+import Columns from "react-bulma-components/lib/components/columns";
 import Heading from "react-bulma-components/lib/components/heading";
 import Button from "react-bulma-components/lib/components/button";
 import PostCodeForm from "../components/PostCodeForm";
@@ -12,7 +13,12 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <HeroSection />
+        <Columns>
+          <Columns.Column size={"two-thirds"}>
+            <HeroSection />
+          </Columns.Column>
+          <Columns.Column className="reviews">Reviews/Om oss?</Columns.Column>
+        </Columns>
         <HowDoesItWork />
       </div>
     );
@@ -25,6 +31,7 @@ const HeroSection = () => {
       <Hero>
         <Hero.Body>
           <Heading>Hälsosamma soppor hem till dig</Heading>
+          <Heading size={5}>Vi levererar i Stockholms innerstad</Heading>
           <br />
           <PostCodeForm />
           <Link to={"/products"}>

@@ -16,7 +16,6 @@ export default class CartIcon extends React.Component {
   }
 
   render() {
-    console.log(this.state, this.props);
     const { shouldSpin } = this.state;
     const { amount } = this.props;
     return (

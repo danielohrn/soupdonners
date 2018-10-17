@@ -1,13 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Image from "react-bulma-components/lib/components/image";
+import Section from "react-bulma-components/lib/components/section";
+import Heading from "react-bulma-components/lib/components/heading";
+import Columns from "react-bulma-components/lib/components/columns";
 import ArrowIcon from "../assets/ArrowIcon";
 import { PRIMARY_GREEN } from "../constants";
 import ProductTagsList from "./ProductTagsList";
 import AddonPicker from "./AddonPicker";
 import NotificationTrigger from "./NotificationTrigger";
 
-const Thumbnail = ({ addToCart, product: { name, img, price, id, tags } }) => {
+const Thumbnail = ({
+  addToCart,
+  product: { name, img, price, id, tags, type }
+}) => {
   const slug = name.replace(/\s/gi, "-").toLowerCase();
   return (
     <div
@@ -46,7 +52,7 @@ const Thumbnail = ({ addToCart, product: { name, img, price, id, tags } }) => {
                   background: PRIMARY_GREEN,
                   color: "white"
                 }}
-                onClick={() => addToCart(id)}
+                onClick={() => addToCart(id, type)}
               >
                 Lägg till i varukorgen
               </button>
@@ -62,16 +68,18 @@ const Thumbnail = ({ addToCart, product: { name, img, price, id, tags } }) => {
 };
 
 const Expanded = ({
-  product: { img, description, name, price, id },
-  addToCart
+  product: { img, description, name, price, id, tags },
+  addToCart,
+  match
 }) => {
+  console.log(match);
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        alignItems: "center",
+        // display: "flex",
+        // justifyContent: "center",
+        // flexDirection: "column",
+        // alignItems: "center",
         height: "100vh",
         width: "100vw",
         position: "fixed",
@@ -82,25 +90,30 @@ const Expanded = ({
         padding: "30px 0"
       }}
     >
-      <Link to={"/products"}>
-        <ArrowIcon
-          style={{
-            transform: "rotate(180deg)",
-            position: "fixed",
-            top: 10,
-            left: 10
-          }}
-        />
-      </Link>
-
-      <img src={img} alt={name} style={{ width: 500 }} />
-      <p>{name}</p>
-      <p>{price} kr</p>
-      <p>{description}</p>
-      <NotificationTrigger message={name + " tillagd i varukorgen!"}>
-        <button onClick={() => addToCart(id)}>Lägg till i varukorg</button>
-      </NotificationTrigger>
-      <AddonPicker />
+      <Section>
+        <Link to={"/products"}>
+          <ArrowIcon
+            style={{
+              transform: "rotate(180deg)",
+              position: "fixed",
+              top: 10,
+              left: 10
+            }}
+          />
+        </Link>
+        <img src={img} alt={name} style={{ width: 500 }} />
+        <Heading>{name}</Heading>
+        <span>{price} kr</span>
+        <p>{description}</p>
+        <NotificationTrigger message={name + " tillagd i varukorgen!"}>
+          <button className="button" onClick={() => addToCart(id)}>
+            Lägg till i varukorg
+          </button>
+        </NotificationTrigger>
+        <ProductTagsList tags={tags} />
+        <Heading size={5}>Lägg till tillbehör</Heading>
+        <AddonPicker expanded={true} />
+      </Section>
     </div>
   );
 };

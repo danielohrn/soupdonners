@@ -28,7 +28,7 @@ export default class AddonPicker extends React.Component {
         {isExpanded ? (
           <ul>
             <Consumer>
-              {({ addToCart, sides }) =>
+              {({ addToCart, products: { sides } }) =>
                 sides.map(side => (
                   <li
                     key={side.name}
