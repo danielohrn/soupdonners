@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "./CartIcon";
 import ContextConsumer from "../context/Consumer";
-import ProfileIcon from "../assets/ProfileIcon";
 import { PRIMARY_GREEN } from "../constants";
 import { LOGOTYPE } from "../libs/images";
 import HambugerMenyIcon from "../assets/HamburgerMenyIcon";
@@ -11,59 +10,38 @@ const Navbar = () => (
   <header
     style={{
       display: "flex",
-      flexDirection: "column",
+      flexDirection: "row",
       padding: "5px 25px",
       background: PRIMARY_GREEN,
-      color: "white"
+      color: "white",
+      justifyContent: "space-between",
+      alignItems: "center"
     }}
   >
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center"
-      }}
-    >
-      <HambugerMenyIcon />
-      {/* <Link to={"/products"}>Meny</Link> */}
-      {/* <div>
-        <Link to={"/"}>Hem</Link>
-        <Link to={"/login"}>Logga in</Link>
-      </div> */}
+    <HambugerMenyIcon />
 
-      <Link
-        style={{
-          color: "inherit",
-          display: "flex",
-          justifyContent: "center",
-          width: 40,
-          height: 40
-        }}
-        to={"/"}
-      >
-        <img src={LOGOTYPE} style={{ width: 40, height: "100%" }} />
-      </Link>
-      <ContextConsumer>
-        {({ shoppingCart: { items }, user: { isSignedIn, info } }) => (
-          <nav style={{ display: "flex", paddingRight: 55 }}>
-            {/* <Link
-              to={isSignedIn ? "/profile" : "/register"}
-              style={{ margin: ".5px 10px" }}
-            >
-              {isSignedIn ? (
-                <React.Fragment>
-                  {info.name}
-                  <ProfileIcon />
-                </React.Fragment>
-              ) : (
-                "Logga in"
-              )}
-            </Link> */}
-            <ShoppingCartIcon amount={items.length} />
-          </nav>
-        )}
-      </ContextConsumer>
-    </div>
+    <Link
+      style={{
+        color: "inherit",
+        display: "flex",
+        justifyContent: "center",
+        width: 40,
+        height: 40
+      }}
+      to={"/"}
+    >
+      <img
+        src={LOGOTYPE}
+        alt={"logotype"}
+        style={{ width: 40, height: "100%" }}
+      />
+    </Link>
+    <div style={{ visibility: "hidden" }}>x</div>
+    <ContextConsumer>
+      {({ shoppingCart: { items }, user: { isSignedIn, info } }) => (
+        <ShoppingCartIcon amount={items.length} />
+      )}
+    </ContextConsumer>
   </header>
 );
 

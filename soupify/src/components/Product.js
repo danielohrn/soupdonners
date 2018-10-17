@@ -12,7 +12,7 @@ import NotificationTrigger from "./NotificationTrigger";
 
 const Thumbnail = ({
   addToCart,
-  product: { name, img, price, id, tags, type }
+  product: { name, img, price, id, tags, type, title }
 }) => {
   const slug = name.replace(/\s/gi, "-").toLowerCase();
   return (
@@ -40,7 +40,23 @@ const Thumbnail = ({
           }}
         >
           <div>
-            <p>{name}</p>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Heading
+                size={4}
+                style={{
+                  marginBottom: 5,
+                  marginRight: 5,
+                  display: "inline-block"
+                }}
+              >
+                {title || name}
+              </Heading>
+              <ProductTagsList tags={tags} />
+            </div>
+            <Heading subtitle size={6} style={{ marginBottom: 5 }}>
+              {name}
+            </Heading>
+
             <p style={{ fontSize: "1.5em" }}>{price} kr</p>
           </div>
           <div>
@@ -62,7 +78,6 @@ const Thumbnail = ({
             </Link>
           </div>
         </div>
-        {/* <ProductTagsList tags={tags} /> */}
         <AddonPicker />
       </div>
     </div>
@@ -74,7 +89,6 @@ const Expanded = ({
   addToCart,
   match
 }) => {
-  console.log(match);
   return (
     <div
       style={{
@@ -84,8 +98,8 @@ const Expanded = ({
         top: 0,
         left: 0,
         background: "white",
-        overflow: "scroll",
-        padding: "30px 0"
+        overflow: "scroll"
+        // padding: "30px 0"
       }}
     >
       <Section>
@@ -94,7 +108,7 @@ const Expanded = ({
             style={{
               transform: "rotate(180deg)",
               position: "fixed",
-              top: 10,
+              top: 15,
               left: 10
             }}
           />

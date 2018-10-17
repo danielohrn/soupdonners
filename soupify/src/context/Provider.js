@@ -18,7 +18,7 @@ export default class ContextProvider extends Component {
       info: { email, name: email }
     };
 
-    this.setState({ user }, () => console.log(this.state.user));
+    this.setState({ user });
   };
 
   removeAllProductTypesFromCart = id => {
@@ -37,7 +37,6 @@ export default class ContextProvider extends Component {
   };
 
   addToCart = (id, PRODUCT_TYPE = "soups") => {
-    console.log(PRODUCT_TYPE, "asd");
     const shoppingCart = { ...this.state.shoppingCart };
     // find product that matches with provided id and product type
     const productToAdd = this.state.products[PRODUCT_TYPE].filter(
@@ -46,7 +45,6 @@ export default class ContextProvider extends Component {
 
     // if product found add it to cart and update ordersummary
     if (productToAdd) {
-      console.log(id, "add");
       shoppingCart.items.push(productToAdd);
       this.setState({ shoppingCart }, this.updateOrderSummary);
       // this.showNotification();
@@ -62,8 +60,6 @@ export default class ContextProvider extends Component {
         break;
       }
     }
-
-    console.log(id, "remove");
     this.setState({ shoppingCart }, this.updateOrderSummary);
   };
 

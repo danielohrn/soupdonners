@@ -1,23 +1,27 @@
 import React from "react";
-import { PRIMARY_GREEN } from "../constants";
+import { ALLERGENICS } from "../libs/images";
 
 export default ({ tags }) => {
   return (
-    <ul style={{ display: "flex", alignItems: "center" }}>
-      <span style={{ marginRight: 5 }}>Innehåller:</span>
-      {tags.map(tagName => (
-        <li
-          key={tagName}
-          style={{
-            marginRight: 5,
-            padding: "5px",
-            borderRadius: "5px",
-            background: PRIMARY_GREEN
-          }}
-        >
-          {tagName}
-        </li>
-      ))}
+    <ul>
+      {tags.map(tagName => {
+        return (
+          <li
+            key={tagName}
+            style={{
+              marginRight: 5,
+              display: "inline-block"
+            }}
+          >
+            <img
+              src={ALLERGENICS[tagName].image}
+              title={ALLERGENICS[tagName].description}
+              style={{ width: 30 }}
+              alt={tagName}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 };

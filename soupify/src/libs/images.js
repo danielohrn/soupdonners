@@ -15,4 +15,23 @@ export var STEPS = {
   "3": require("../assets/img/step-3.png")
 };
 
+export var ALLERGENICS = {
+  gluten: {
+    description: "Innehåller gluten",
+    image: require("../assets/img/gluten.svg")
+  },
+  milk: {
+    description: "Innehåller mjölk",
+    image: require("../assets/img/milk.svg")
+  },
+  vegan: {
+    description: "Vegansk",
+    image: require("../assets/img/vegan.svg")
+  },
+  vegetarian: {
+    description: "Vegetariansk",
+    image: require("../assets/img/vegetarian.svg")
+  }
+};
+
 export const LOGOTYPE = require("../assets/img/soupify-logo.png");

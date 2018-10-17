@@ -5,23 +5,25 @@ import Product from "../components/Product";
 import Columns from "react-bulma-components/lib/components/columns";
 import Section from "react-bulma-components/lib/components/section";
 import Heading from "react-bulma-components/lib/components/heading";
+import Allergenicslegend from "../components/Allergenicslegend";
 
 export default () => {
   return (
     <Section>
       <Columns>
-        <ProductGallery TYPE={"soups"} />
+        <ProductGallery TYPE={"soups"} showLegend={true} />
         <ProductGallery TYPE={"sides"} />
       </Columns>
     </Section>
   );
 };
 
-const ProductGallery = ({ TYPE = "soups" }) => {
+const ProductGallery = ({ TYPE = "soups", showLegend }) => {
   return (
     <React.Fragment>
       <Columns.Column size={"full"}>
         <Heading>{TYPE === "soups" ? "Soppor" : "Tillbehör"}</Heading>
+        {showLegend ? <Allergenicslegend /> : null}
       </Columns.Column>
       <ContextConsumer>
         {({ products, addToCart }) =>

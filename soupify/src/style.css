@@ -6428,9 +6428,7 @@ a {
   background-repeat: no-repeat;
   position: relative; }
   .hero-background h1 {
-    color: white;
-    background: #219653;
-    padding: 0 .5em;
+    background: rgba(255, 255, 255, 0.5);
     display: inline-block;
     font-size: 5vw; }
 
@@ -6444,4 +6442,37 @@ a {
 @media (max-width: 650px) {
   .hero-background {
     background-size: 800px auto;
-    background-position-x: -95px; } }
+    background-position-x: -95px; }
+    .hero-background h1 {
+      font-size: 30px; } }
+
+.wrap-mobile {
+  display: flex; }
+
+@media (max-width: 560px) {
+  .wrap-mobile {
+    display: block; } }
+
+.checkout-banner {
+  display: flex;
+  justify-content: flex-end; }
+  .checkout-banner button {
+    display: none; }
+
+@media (max-width: 790px) {
+  .checkout-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2em 1em;
+    border: 1px solid lightgrey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    z-index: 1; }
+    .checkout-banner h1, .checkout-banner span {
+      font-size: 20px; }
+    .checkout-banner button {
+      display: initial; } }

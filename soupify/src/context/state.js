@@ -1,5 +1,4 @@
 import images from "../libs/images";
-import { TAGS } from "../constants";
 let { soup1, soup2, soup3, soup4, soup5, soup6 } = images;
 
 const generateId = (start => () => ++start)(0);
@@ -8,13 +7,14 @@ const state = {
   products: {
     soups: [
       {
+        title: "Morotssoppa",
         name: "Värmande morotsoppa med ingefära och chili",
         type: "soups",
         id: generateId(),
         price: 99,
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
-        tags: [TAGS.FISH, TAGS.GLUTEN_FREE, TAGS.SPICY],
+        tags: ["milk", "gluten"],
         img: soup1
       },
       {
@@ -24,7 +24,7 @@ const state = {
         price: 99,
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
-        tags: [TAGS.VEGETARIAN, TAGS.GLUTEN_FREE],
+        tags: ["milk", "gluten"],
         img: soup2
       },
       {
@@ -34,7 +34,7 @@ const state = {
         price: 99,
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
-        tags: [TAGS.FISH],
+        tags: ["milk", "gluten"],
         img: soup3
       },
       {
@@ -44,7 +44,7 @@ const state = {
         price: 99,
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
-        tags: [TAGS.GLUTEN_FREE],
+        tags: ["milk", "gluten"],
         img: soup4
       },
       {
@@ -54,7 +54,7 @@ const state = {
         price: 99,
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
-        tags: [TAGS.FISH],
+        tags: ["milk", "gluten", "vegan"],
         img: soup5
       },
       {
@@ -64,7 +64,7 @@ const state = {
         price: 99,
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
-        tags: [TAGS.SPICY],
+        tags: ["milk", "gluten", "vegetarian"],
         img: soup6
       }
     ],
@@ -72,6 +72,7 @@ const state = {
     sides: [
       {
         name: "Bröd",
+        tags: [],
         type: "sides",
         price: 25,
         id: generateId(),
@@ -81,6 +82,7 @@ const state = {
       },
       {
         name: "Smörgås",
+        tags: [],
         type: "sides",
         price: 35,
         id: generateId(),
@@ -91,6 +93,7 @@ const state = {
 
       {
         name: "Krutonger",
+        tags: [],
         type: "sides",
         price: 35,
         id: generateId(),
@@ -104,7 +107,8 @@ const state = {
   shoppingCart: {
     items: [
       // {
-      //   name: "Krya på dig",
+      //   title: "Morotssoppa",
+      //   name: "Värmande morotsoppa med ingefära och chili",
       //   id: 1,
       //   price: 99,
       //   description: "Soppan är god bror",
@@ -112,8 +116,9 @@ const state = {
       // }
     ],
     orderSummary: {
-      // "Krya på dig": {
-      //   name: "Krya på dig",
+      // Morotssopppa: {
+      //   title: "Morotssoppa",
+      //   name: "Värmande morotsoppa med ingefära och chili",
       //   id: 1,
       //   price: 99,
       //   description: "Soppan är god bror",
