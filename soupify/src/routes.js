@@ -72,21 +72,44 @@ const routes = [
   }
 ];
 
-/** Routes for single product page */
+/** Routes for single product page (SOUPS AND SIDES) */
 export function ProductRoutes(props) {
   return (
     <ContextConsumer>
-      {({ products: { soups }, addToCart }) =>
-        soups.map(p => (
-          <Route
-            key={p.id}
-            path={"/products/" + p.name.replace(/\s/gi, "-").toLowerCase()}
-            exact={true}
-            render={props => (
-              <Product.Expanded {...props} product={p} addToCart={addToCart} />
-            )}
-          />
-        ))
+      {({ products: { soups, sides }, addToCart }) =>
+        soups
+          .map(p => (
+            <Route
+              key={p.id}
+              path={"/products/" + p.name.replace(/\s/gi, "-").toLowerCase()}
+              exact={true}
+              render={props => (
+                <Product.Expanded
+                  {...props}
+                  product={p}
+                  addToCart={addToCart}
+                />
+              )}
+            />
+          ))
+          .concat(
+            sides.map(side => (
+              <Route
+                key={side.id}
+                path={
+                  "/products/" + side.name.replace(/\s/gi, "-").toLowerCase()
+                }
+                exact={true}
+                render={props => (
+                  <Product.Expanded
+                    {...props}
+                    product={side}
+                    addToCart={addToCart}
+                  />
+                )}
+              />
+            ))
+          )
       }
     </ContextConsumer>
   );

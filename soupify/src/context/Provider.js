@@ -1,6 +1,16 @@
 import React, { Component, createContext } from "react";
 import STATE from "./state";
 
+const isValidStockholmPostCode = input => {
+  const LOW = 10012;
+  const HIGH = 19587;
+  try {
+    return parseInt(input) >= LOW && parseInt(input) <= HIGH;
+  } catch (err) {
+    return false;
+  }
+};
+
 export const AppContext = createContext();
 
 export default class ContextProvider extends Component {
@@ -80,6 +90,45 @@ export default class ContextProvider extends Component {
     this.setState({ shoppingCart });
   };
 
+  resetDeliveryAddress = () => {
+    const user = { ...this.state.user };
+    user.info.deliveryAddress = null;
+    user.hasValidDeliveryAddress = false;
+    user.hasPickedDeliveryAddress = false;
+    this.setState({ user });
+  };
+
+  onSubmitDeliveryAddress = e => {
+    e.preventDefault();
+    const user = { ...this.state.user };
+    const postCode = e.target.deliveryAddress.value;
+
+    // user has valid post code
+    if (isValidStockholmPostCode(postCode)) {
+      user.hasValidDeliveryAddress = true;
+      user.hasPickedDeliveryAddress = true;
+
+      user.isFirstVisitOnHomePage = false;
+      user.info.deliveryAddress = postCode;
+      console.log("valid postcode");
+      return this.setState({ user });
+    }
+
+    // invalid postcode and had a valid postcode before
+    if (user.hasValidDeliveryAddress) {
+      user.hasValidDeliveryAddress = false;
+      user.info.deliveryAddress = null;
+      return this.setState({ user });
+    }
+
+    // invalid post code and did not previously enter post code
+    console.log("invalid postcode");
+    user.hasPickedDeliveryAddress = true;
+    user.hasValidDeliveryAddress = false;
+    user.info.deliveryAddress = postCode;
+    return this.setState({ user });
+  };
+
   render() {
     return (
       <AppContext.Provider
@@ -92,7 +141,9 @@ export default class ContextProvider extends Component {
           logOut: this.logOut,
           addToCart: this.addToCart,
           removeFromCart: this.removeFromCart,
-          removeAllProductTypesFromCart: this.removeAllProductTypesFromCart
+          removeAllProductTypesFromCart: this.removeAllProductTypesFromCart,
+          onSubmitDeliveryAddress: this.onSubmitDeliveryAddress,
+          resetDeliveryAddress: this.resetDeliveryAddress
         }}
       >
         {this.props.children}

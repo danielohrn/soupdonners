@@ -17,8 +17,8 @@ const Notification = ({ message, placement = "TOP" }) => {
         alignItems: "center",
         color: PRIMARY_GREEN,
         background: "white",
-        animation: "swoosh .3s ease",
-        zIndex: 1
+        animation: "swoosh-in-from-left .3s ease",
+        zIndex: 3
       }}
     >
       {message}

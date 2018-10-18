@@ -6422,13 +6422,18 @@ label.panel-block {
 a {
   color: inherit; }
 
+a.cart-icon:active, a.cart-icon:hover {
+  color: 'white'; }
+
 .hero-background {
-  background-image: url("https://scstylecaster.files.wordpress.com/2016/10/fall-soups.jpg");
+  background-image: url("./assets/img/hero-soup.jpeg");
+  background-size: 100% auto;
   background-position-y: -95px;
   background-repeat: no-repeat;
   position: relative; }
   .hero-background h1 {
     background: rgba(255, 255, 255, 0.5);
+    padding: 0 .5em;
     display: inline-block;
     font-size: 5vw; }
 
@@ -6439,9 +6444,9 @@ a {
   .reviews {
     display: flex; } }
 
-@media (max-width: 650px) {
+@media (max-width: 900px) {
   .hero-background {
-    background-size: 800px auto;
+    background-size: 1000px auto;
     background-position-x: -95px; }
     .hero-background h1 {
       font-size: 30px; } }
@@ -6469,11 +6474,11 @@ a {
     width: 100%;
     padding: 2em 1em;
     border: 1px solid lightgrey;
-    display: flex;
     justify-content: space-between;
     align-items: center;
     background: white;
-    z-index: 1; }
+    z-index: 1;
+    flex-wrap: wrap; }
     .checkout-banner h1, .checkout-banner span {
       font-size: 20px; }
     .checkout-banner button {

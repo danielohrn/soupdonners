@@ -30,7 +30,12 @@ export default class NotificationTrigger extends Component {
     return (
       <div onClick={this.showNotification} style={{ display: "inline" }}>
         {this.props.children}
-        {active ? <Notification message={this.props.message} /> : null}
+        {active ? (
+          <Notification
+            placement={this.props.placement}
+            message={this.props.message}
+          />
+        ) : null}
       </div>
     );
   }

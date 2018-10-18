@@ -136,10 +136,16 @@ const GoToCheckoutBanner = ({ total }) => {
       <button
         className="button is-success is-medium"
         onClick={() => {
-          if (window.innerWidth < 790) {
-            window.scroll({ top: window.innerHeight, behavior: "smooth" });
+          const MOBILE_BREAKPOINT = 790;
+          const BOTTOM_OF_WINDOW = window.document.body.getBoundingClientRect()
+            .bottom;
+
+          // on mobile - scroll to bottom of page to payment form
+          if (window.innerWidth < MOBILE_BREAKPOINT) {
+            window.scroll({ top: BOTTOM_OF_WINDOW, behavior: "smooth" });
           }
-          document.getElementById("payment").focus();
+          // focus on input field after 500 ms so scroll to bottom is not interupted
+          setTimeout(() => document.getElementById("payment").focus(), 500);
         }}
       >
         Gå till betalning

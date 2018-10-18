@@ -18,7 +18,7 @@ const state = {
         img: soup1
       },
       {
-        name: "Höstsoppa",
+        name: "Fiskoppa",
         type: "soups",
         id: generateId(),
         price: 99,
@@ -28,7 +28,7 @@ const state = {
         img: soup2
       },
       {
-        name: "Varm soppa",
+        name: "Linssoppa",
         type: "soups",
         id: generateId(),
         price: 99,
@@ -38,7 +38,7 @@ const state = {
         img: soup3
       },
       {
-        name: "Kall soppa",
+        name: "Broccolisoppa",
         type: "soups",
         id: generateId(),
         price: 99,
@@ -48,7 +48,7 @@ const state = {
         img: soup4
       },
       {
-        name: "Bränd soppa",
+        name: "Potatissoppa",
         type: "soups",
         id: generateId(),
         price: 99,
@@ -58,7 +58,7 @@ const state = {
         img: soup5
       },
       {
-        name: "Nice soppa",
+        name: "Spenatsoppa",
         type: "soups",
         id: generateId(),
         price: 99,
@@ -72,7 +72,7 @@ const state = {
     sides: [
       {
         name: "Bröd",
-        tags: [],
+        tags: ["gluten"],
         type: "sides",
         price: 25,
         id: generateId(),
@@ -82,7 +82,7 @@ const state = {
       },
       {
         name: "Smörgås",
-        tags: [],
+        tags: ["gluten"],
         type: "sides",
         price: 35,
         id: generateId(),
@@ -97,7 +97,7 @@ const state = {
         type: "sides",
         price: 35,
         id: generateId(),
-        description: "Krut-ånger",
+        description: "En påse krut-ånger",
         img:
           "https://cdn-rdb.arla.com/Files/arla-se/1736211522/19050b08-c817-4071-8a51-f837c6697f03.jpg?mode=crop&w=600&h=450&scale=both&ak=f525e733&hm=0f9e5878"
       }
@@ -130,11 +130,14 @@ const state = {
   },
 
   user: {
+    isFirstVisitOnHomePage: true,
+    hasValidDeliveryAddress: false,
     hasPickedDeliveryAddress: false,
     isSignedIn: false,
     info: {
       name: null,
-      email: null
+      email: null,
+      deliveryAddress: null
     }
   }
 };

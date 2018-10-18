@@ -9,6 +9,7 @@ export default () => {
           <img
             src={ALLERGENICS[allergenic].image}
             style={{ width: 30, height: 30 }}
+            alt={allergenic}
           />
           <span>{ALLERGENICS[allergenic].description}</span>
         </div>

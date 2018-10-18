@@ -20,9 +20,10 @@ export default class CartIcon extends React.Component {
     const { amount } = this.props;
     return (
       <Link
+        className="cart-icon"
         to={"/cart"}
         style={{
-          zIndex: 2,
+          zIndex: 3,
           display: "flex",
           justifyContent: "space-around",
           alignItems: "center",

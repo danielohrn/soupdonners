@@ -8,23 +8,22 @@ import Heading from "react-bulma-components/lib/components/heading";
 import Button from "react-bulma-components/lib/components/button";
 import PostCodeForm from "../components/PostCodeForm";
 import { STEPS } from "../libs/images";
-import { PRIMARY_GREEN } from "../constants";
 
 export default class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <Columns>
-          <Columns.Column size={"two-thirds"}>
-            <HeroSection />
-          </Columns.Column>
+        {/* <Columns>
+          <Columns.Column size={"two-thirds"}> */}
+        <HeroSection />
+        {/* </Columns.Column>
           <Columns.Column className="reviews">
             <Section>
               <Heading>Vill vi ha något här?</Heading>
               <Heading subtitle>Kanske typ reviews?</Heading>
             </Section>
           </Columns.Column>
-        </Columns>
+        </Columns> */}
         <HowDoesItWork />
       </div>
     );
@@ -34,21 +33,10 @@ export default class HomePage extends React.Component {
 const HeroSection = () => {
   return (
     <Section className="hero-background">
-      {/* <video
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          top: 0,
-          left: 0
-        }}
-        src={heroVideo}
-        autoPlay
-        loop
-      /> */}
       <Hero>
         <Hero.Body>
           <Heading>Hälsosamma soppor</Heading>
+          <br />
           <Heading size={5}>Vi levererar i Stockholms innerstad</Heading>
           <br />
           <PostCodeForm />

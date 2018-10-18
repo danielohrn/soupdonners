@@ -1,5 +1,6 @@
 import React from "react";
 import Consumer from "../context/Consumer";
+import { Link } from "react-router-dom";
 import NotificationTrigger from "./NotificationTrigger";
 
 export default class AddonPicker extends React.Component {
@@ -44,11 +45,18 @@ export default class AddonPicker extends React.Component {
                         alignItems: "center"
                       }}
                     >
-                      <img
-                        alt={side.name}
-                        style={{ width: 50 }}
-                        src={side.img}
-                      />
+                      <Link
+                        to={
+                          "/products/" +
+                          side.name.replace(/\s/gi, "-").toLowerCase()
+                        }
+                      >
+                        <img
+                          alt={side.name}
+                          style={{ width: 50 }}
+                          src={side.img}
+                        />
+                      </Link>
                       <span style={{ margin: "0 10px" }}>{side.name}</span>
                       <b>{side.price} kr</b>
                     </div>

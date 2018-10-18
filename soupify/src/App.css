@@ -3,7 +3,7 @@ body {
 }
 
 .App {
-  padding: 0 30px; 
+  padding-top: 50px; 
 }
 
 a {
@@ -29,12 +29,23 @@ a {
   }
 }
 
-@keyframes swoosh {
+@keyframes swoosh-in-from-left {
   from {
     transform: translateX(-100%)
   }
 
   to {
     transform: translateX(0); 
+  }
+}
+
+
+@keyframes swoosh-out-to-right {
+  from {
+    transform: translateX(0)
+  }
+
+  to {
+    transform: translateX(200%); 
   }
 }

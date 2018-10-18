@@ -15,7 +15,11 @@ const Navbar = () => (
       background: PRIMARY_GREEN,
       color: "white",
       justifyContent: "space-between",
-      alignItems: "center"
+      alignItems: "center",
+      zIndex: 2,
+      position: "fixed",
+      top: 0,
+      width: "100%"
     }}
   >
     <HambugerMenyIcon />

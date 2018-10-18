@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-
 import routes, { ProductRoutes } from "./routes";
 import ContextProvider from "./context/Provider";
 import Navbar from "./components/Navbar";
@@ -22,7 +21,7 @@ class App extends Component {
     return (
       <ContextProvider>
         <Navbar />
-        <div /*className="App"*/>
+        <div className="App">
           <ProductRoutes />
           <Switch>{this.pageRoutes()}</Switch>
         </div>

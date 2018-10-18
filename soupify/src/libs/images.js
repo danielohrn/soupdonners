@@ -24,13 +24,13 @@ export var ALLERGENICS = {
     description: "Innehåller mjölk",
     image: require("../assets/img/milk.svg")
   },
-  vegan: {
-    description: "Vegansk",
-    image: require("../assets/img/vegan.svg")
-  },
   vegetarian: {
-    description: "Vegetariansk",
+    description: "Vegetarisk",
     image: require("../assets/img/vegetarian.svg")
+  },
+  vegan: {
+    description: "Vegan",
+    image: require("../assets/img/vegan.svg")
   }
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Image from "react-bulma-components/lib/components/image";
 import Section from "react-bulma-components/lib/components/section";
 import Heading from "react-bulma-components/lib/components/heading";
@@ -85,9 +85,8 @@ const Thumbnail = ({
 };
 
 const Expanded = ({
-  product: { img, description, name, price, id, tags },
-  addToCart,
-  match
+  product: { img, description, name, price, id, tags, type },
+  addToCart
 }) => {
   return (
     <div
@@ -98,8 +97,9 @@ const Expanded = ({
         top: 0,
         left: 0,
         background: "white",
-        overflow: "scroll"
-        // padding: "30px 0"
+        overflow: "scroll",
+        paddingTop: "40px",
+        zIndex: 1
       }}
     >
       <Section>
@@ -108,8 +108,8 @@ const Expanded = ({
             style={{
               transform: "rotate(180deg)",
               position: "fixed",
-              top: 15,
-              left: 10
+              top: 60,
+              left: 25
             }}
           />
         </Link>
@@ -138,20 +138,21 @@ const Expanded = ({
               <button
                 style={{ marginTop: 10 }}
                 className="button is-success"
-                onClick={() => addToCart(id)}
+                onClick={() => addToCart(id, type)}
               >
                 Lägg till i varukorg
               </button>
             </NotificationTrigger>
           </Columns.Column>
         </Columns>
-
-        <Columns breakpoint={"mobile"}>
-          <Columns.Column size={"half-tablet"}>
-            <Heading size={5}>Lägg till tillbehör</Heading>
-            <AddonPicker expanded={true} />
-          </Columns.Column>
-        </Columns>
+        {type === "soups" ? (
+          <Columns breakpoint={"mobile"}>
+            <Columns.Column className={"is-half-tablet"}>
+              <Heading size={5}>Lägg till tillbehör</Heading>
+              <AddonPicker expanded={true} />
+            </Columns.Column>
+          </Columns>
+        ) : null}
       </Section>
     </div>
   );
