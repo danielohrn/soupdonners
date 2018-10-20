@@ -39,7 +39,7 @@ const HeroSection = () => {
           <br />
           <Heading size={5}>Vi levererar i Stockholms innerstad</Heading>
           <br />
-          <PostCodeForm />
+          <PostCodeForm style={{ maxWidth: 480 }} />
           <Link to={"/products"}>
             <Button>Se vår meny</Button> <br />
           </Link>

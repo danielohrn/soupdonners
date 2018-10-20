@@ -8,6 +8,7 @@ export default class ProductSummary extends React.Component {
   };
 
   handleRemoveProductsOfType = () => {
+    const REMOVE_PRODUCT_DELAY = 300;
     this.setState(
       {
         animation: "swoosh-out-to-right .5s forwards"
@@ -15,7 +16,7 @@ export default class ProductSummary extends React.Component {
       () => {
         setTimeout(
           () => this.props.removeAllProductTypesFromCart(this.props.product.id),
-          500
+          REMOVE_PRODUCT_DELAY
         );
       }
     );
@@ -37,10 +38,9 @@ export default class ProductSummary extends React.Component {
         >
           <Columns.Column size={"half"}>
             <Link
-              to={
-                "/products/" +
-                this.props.product.name.replace(/\s/gi, "-").toLowerCase()
-              }
+              to={`/products/${
+                this.props.product.type
+              }/${this.props.product.name.replace(/\s/gi, "-").toLowerCase()}`}
             >
               <img
                 src={this.props.product.img}
@@ -96,58 +96,3 @@ export default class ProductSummary extends React.Component {
     );
   }
 }
-
-// const ProductSummary = ({
-//   product: { quantity, name, img, price, id, description, type },
-//   addToCart,
-//   removeFromCart,
-//   removeAllProductTypesFromCart
-// }) => {
-//   return (
-//     <div
-//       style={{
-//         animation: "swoosh .5s forwards"
-//       }}
-//     >
-//       <Columns
-//         style={{ boxShadow: "lightgrey 0px 1px 1px 0px", marginBottom: "1em" }}
-//         breakpoint={"mobile"}
-//       >
-//         <Columns.Column size={"half"}>
-//           <Link to={"/products/" + name.replace(/\s/gi, "-").toLowerCase()}>
-//             <img src={img} alt={name} style={{ width: 135 }} />
-//           </Link>
-//         </Columns.Column>
-//         <Columns.Column size={"half"}>
-//           <h2 className="has-text-weight-semibold">{name}</h2>
-//           {/* <p>{description}</p> */}
-//           <p>{price} kr / styck</p>
-//         </Columns.Column>
-//         <Columns.Column size={"half"}>
-//           <button
-//             className="button is-danger"
-//             onClick={e => {
-//               e.preventDefault();
-//               removeAllProductTypesFromCart(id);
-//             }}
-//           >
-//             Ta bort artikeln
-//           </button>
-//         </Columns.Column>
-//         <Columns.Column size={"half"}>
-//           <button className="button" onClick={() => removeFromCart(id, type)}>
-//             -
-//           </button>
-//           <span style={{ display: "inline-block", margin: ".5em" }}>
-//             {quantity}
-//           </span>
-//           <button className="button" onClick={() => addToCart(id, type)}>
-//             +
-//           </button>
-//         </Columns.Column>
-//       </Columns>
-//     </div>
-//   );
-// };
-
-// export default ProductSummary;

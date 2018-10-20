@@ -46,10 +46,9 @@ export default class AddonPicker extends React.Component {
                       }}
                     >
                       <Link
-                        to={
-                          "/products/" +
-                          side.name.replace(/\s/gi, "-").toLowerCase()
-                        }
+                        to={`/products/${side.type}/${side.name
+                          .replace(/\s/gi, "-")
+                          .toLowerCase()}`}
                       >
                         <img
                           alt={side.name}

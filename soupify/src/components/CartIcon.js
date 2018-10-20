@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { PRIMARY_GREEN } from "../constants";
+import ContextConsumer from "../context/Consumer";
 
-export default class CartIcon extends React.Component {
+class ShoppingCartIcon extends React.Component {
   state = {
     shouldSpin: false
   };
@@ -33,7 +34,8 @@ export default class CartIcon extends React.Component {
           width: 80,
           borderTopLeftRadius: 7,
           borderBottomLeftRadius: 7,
-          background: PRIMARY_GREEN
+          background: PRIMARY_GREEN,
+          color: "white"
         }}
       >
         <svg
@@ -54,3 +56,11 @@ export default class CartIcon extends React.Component {
     );
   }
 }
+
+export default () => (
+  <ContextConsumer>
+    {({ shoppingCart: { items }, user: { isSignedIn, info } }) => (
+      <ShoppingCartIcon amount={items.length} />
+    )}
+  </ContextConsumer>
+);

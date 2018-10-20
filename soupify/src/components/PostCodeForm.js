@@ -1,7 +1,8 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import LocationIcon from "../assets/LocationIcon";
 import Consumer from "../context/Consumer";
-
+import { checkoutFormScrollAndFocusHandler } from "../libs/utils";
 /**
     if NOT pickedAddress
       show form
@@ -11,7 +12,7 @@ import Consumer from "../context/Consumer";
       show tyvärr 
  */
 
-const PostCodeForm = () => (
+const PostCodeForm = ({ style, match }) => (
   <Consumer>
     {({
       onSubmitDeliveryAddress,
@@ -23,19 +24,24 @@ const PostCodeForm = () => (
         info
       }
     }) => {
+      const IS_ON_HOME_PAGE = match.path === "/";
       if (!hasPickedDeliveryAddress) {
         return (
           <div style={{ margin: "1em 0" }}>
             <form
               onSubmit={onSubmitDeliveryAddress}
-              style={{ position: "relative", maxWidth: 480 }}
+              style={{ ...style, position: "relative" }}
             >
               <input
+                autoComplete="off"
                 id="deliveryAddress"
                 className="input"
                 type="number"
                 placeholder="Ange postnummer"
                 required
+                onFocus={
+                  IS_ON_HOME_PAGE ? null : checkoutFormScrollAndFocusHandler
+                }
               />
               <button
                 type="submit"
@@ -50,19 +56,23 @@ const PostCodeForm = () => (
       } else if (hasPickedDeliveryAddress && hasValidDeliveryAddress) {
         return (
           <div style={{ display: "flex", margin: "10px 0" }}>
-            <p style={{ fontWeight: "bold", color: "green", margin: "0 10px" }}>
+            <p style={{ fontWeight: "bold", color: "green", marginRight: 10 }}>
               Vi leverar till {info.deliveryAddress}
             </p>
-            <button onClick={resetDeliveryAddress}>Ändra adress</button>
+            <button className="button is-small" onClick={resetDeliveryAddress}>
+              Ändra adress
+            </button>
           </div>
         );
       } else if (hasPickedDeliveryAddress && !hasValidDeliveryAddress) {
         return (
           <div style={{ display: "flex", margin: "10px 0" }}>
-            <p style={{ fontWeight: "bold", color: "red", margin: "0 10px" }}>
+            <p style={{ fontWeight: "bold", color: "red", marginRight: 10 }}>
               Vi leverar tyvärr inte till postnummer {info.deliveryAddress}
             </p>
-            <button onClick={resetDeliveryAddress}>Ändra adress</button>
+            <button className="button is-small" onClick={resetDeliveryAddress}>
+              Ändra adress
+            </button>
           </div>
         );
       }
@@ -70,4 +80,4 @@ const PostCodeForm = () => (
   </Consumer>
 );
 
-export default PostCodeForm;
+export default withRouter(PostCodeForm);

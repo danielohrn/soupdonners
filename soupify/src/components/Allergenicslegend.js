@@ -5,7 +5,7 @@ export default () => {
   return (
     <div className="wrap-mobile">
       {Object.keys(ALLERGENICS).map(allergenic => (
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div key={allergenic} style={{ display: "flex", alignItems: "center" }}>
           <img
             src={ALLERGENICS[allergenic].image}
             style={{ width: 30, height: 30 }}

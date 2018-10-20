@@ -7,6 +7,9 @@ import Section from "react-bulma-components/lib/components/section";
 import Heading from "react-bulma-components/lib/components/heading";
 
 import AddonPicker from "../components/AddonPicker";
+import PostCodeForm from "../components/PostCodeForm";
+import PaymentForm from "../components/PaymentForm";
+import { checkoutFormScrollAndFocusHandler } from "../libs/utils";
 
 export default () => {
   return (
@@ -17,7 +20,8 @@ export default () => {
             addToCart,
             removeFromCart,
             removeAllProductTypesFromCart,
-            shoppingCart: { orderSummary }
+            shoppingCart: { orderSummary },
+            user: { hasPickedDeliveryAddress, hasValidDeliveryAddress, info }
           }) => {
             const { total, ...products } = orderSummary;
             return total ? (
@@ -25,7 +29,7 @@ export default () => {
                 <Columns>
                   <Columns.Column size={"half"}>
                     <Columns>
-                      <Columns.Column size={"full"}>
+                      <Columns.Column className={"is-full"}>
                         <React.Fragment>
                           <Heading size={4}>
                             Vill du lägga till tillbehör?
@@ -50,38 +54,22 @@ export default () => {
                   <Columns.Column size={"half"}>
                     <Columns breakpoint={"mobile"}>
                       <Columns.Column size={"full"} className="payment-form">
-                        <Heading size={4}>Kortuppgifter</Heading>
-                        <input
-                          id="payment"
-                          style={{ marginBottom: 10 }}
-                          type="text"
-                          placeholder="Kortnummer"
-                          className="input"
-                        />
-                        <div className="field is-grouped">
-                          <input
-                            style={{ marginBottom: 10 }}
-                            type="text"
-                            placeholder="CVC"
-                            className="input"
-                          />
-                          <input
-                            style={{ marginBottom: 10 }}
-                            type="text"
-                            placeholder="Expiry"
-                            className="input"
-                          />
-                        </div>
-                        <button
-                          className="button"
-                          onClick={e => e.preventDefault()}
-                          type="submit"
-                        >
-                          Betala
-                        </button>
+                        {hasPickedDeliveryAddress && hasValidDeliveryAddress ? (
+                          <PaymentForm deliveryAddress={info.deliveryAddress} />
+                        ) : (
+                          <React.Fragment>
+                            <Heading>Ange ditt postnummer</Heading>
+                            <PostCodeForm />
+                          </React.Fragment>
+                        )}
                       </Columns.Column>
                       <Columns.Column>
-                        <GoToCheckoutBanner total={total} />
+                        <GoToCheckoutBanner
+                          userHasPickedDeliveryAddress={
+                            hasPickedDeliveryAddress
+                          }
+                          total={total}
+                        />
                       </Columns.Column>
                     </Columns>
                   </Columns.Column>
@@ -124,7 +112,7 @@ const ProductsSummaryList = ({
     ));
 };
 
-const GoToCheckoutBanner = ({ total }) => {
+const GoToCheckoutBanner = ({ total, userHasPickedDeliveryAddress }) => {
   return (
     <div className="checkout-banner">
       <div>
@@ -135,20 +123,11 @@ const GoToCheckoutBanner = ({ total }) => {
       </div>
       <button
         className="button is-success is-medium"
-        onClick={() => {
-          const MOBILE_BREAKPOINT = 790;
-          const BOTTOM_OF_WINDOW = window.document.body.getBoundingClientRect()
-            .bottom;
-
-          // on mobile - scroll to bottom of page to payment form
-          if (window.innerWidth < MOBILE_BREAKPOINT) {
-            window.scroll({ top: BOTTOM_OF_WINDOW, behavior: "smooth" });
-          }
-          // focus on input field after 500 ms so scroll to bottom is not interupted
-          setTimeout(() => document.getElementById("payment").focus(), 500);
-        }}
+        onClick={checkoutFormScrollAndFocusHandler}
       >
-        Gå till betalning
+        {userHasPickedDeliveryAddress
+          ? "Gå till betalning"
+          : "Kontrollera leveransadress"}
       </button>
     </div>
   );

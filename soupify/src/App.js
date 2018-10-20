@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import routes, { ProductRoutes } from "./routes";
+import routes from "./routes";
 import ContextProvider from "./context/Provider";
 import Navbar from "./components/Navbar";
+import ShoppingCartIcon from "./components/CartIcon";
 
 class App extends Component {
   pageRoutes() {
@@ -21,8 +22,8 @@ class App extends Component {
     return (
       <ContextProvider>
         <Navbar />
+        <ShoppingCartIcon />
         <div className="App">
-          <ProductRoutes />
           <Switch>{this.pageRoutes()}</Switch>
         </div>
       </ContextProvider>

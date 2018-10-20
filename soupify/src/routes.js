@@ -57,10 +57,38 @@ const routes = [
     exact: false
   },
   {
-    slug: "/admin",
-    name: "Admin",
-    component: () => <h1>Admin</h1>,
-    exact: false
+    slug: "/products/:type/:productName",
+    name: "Single Product",
+    exact: false,
+    component: ({ match }) => (
+      <ContextConsumer>
+        {({ products, addToCart }) => {
+          const p = products[match.params.type].filter(p => {
+            if (
+              p.name.replace(/\s/gi, "-").toLowerCase() ===
+              match.params.productName
+            ) {
+              return p;
+            }
+          })[0];
+
+          return (
+            <Route
+              key={p.id}
+              path={"/products/:type/:productName"}
+              exact={false}
+              render={props => (
+                <Product.Expanded
+                  {...props}
+                  product={p}
+                  addToCart={addToCart}
+                />
+              )}
+            />
+          );
+        }}
+      </ContextConsumer>
+    )
   },
 
   {
@@ -73,46 +101,46 @@ const routes = [
 ];
 
 /** Routes for single product page (SOUPS AND SIDES) */
-export function ProductRoutes(props) {
-  return (
-    <ContextConsumer>
-      {({ products: { soups, sides }, addToCart }) =>
-        soups
-          .map(p => (
-            <Route
-              key={p.id}
-              path={"/products/" + p.name.replace(/\s/gi, "-").toLowerCase()}
-              exact={true}
-              render={props => (
-                <Product.Expanded
-                  {...props}
-                  product={p}
-                  addToCart={addToCart}
-                />
-              )}
-            />
-          ))
-          .concat(
-            sides.map(side => (
-              <Route
-                key={side.id}
-                path={
-                  "/products/" + side.name.replace(/\s/gi, "-").toLowerCase()
-                }
-                exact={true}
-                render={props => (
-                  <Product.Expanded
-                    {...props}
-                    product={side}
-                    addToCart={addToCart}
-                  />
-                )}
-              />
-            ))
-          )
-      }
-    </ContextConsumer>
-  );
-}
+// export function ProductRoutes(props) {
+//   return (
+//     <ContextConsumer>
+//       {({ products: { soups, sides }, addToCart }) =>
+//         soups
+//           .map(p => (
+//             <Route
+//               key={p.id}
+//               path={"/products/" + p.name.replace(/\s/gi, "-").toLowerCase()}
+//               exact={true}
+//               render={props => (
+//                 <Product.Expanded
+//                   {...props}
+//                   product={p}
+//                   addToCart={addToCart}
+//                 />
+//               )}
+//             />
+//           ))
+//           .concat(
+//             sides.map(side => (
+//               <Route
+//                 key={side.id}
+//                 path={
+//                   "/products/" + side.name.replace(/\s/gi, "-").toLowerCase()
+//                 }
+//                 exact={true}
+//                 render={props => (
+//                   <Product.Expanded
+//                     {...props}
+//                     product={side}
+//                     addToCart={addToCart}
+//                   />
+//                 )}
+//               />
+//             ))
+//           )
+//       }
+//     </ContextConsumer>
+//   );
+// }
 
 export default routes;

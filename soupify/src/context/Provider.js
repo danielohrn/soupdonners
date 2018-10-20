@@ -1,15 +1,6 @@
 import React, { Component, createContext } from "react";
 import STATE from "./state";
-
-const isValidStockholmPostCode = input => {
-  const LOW = 10012;
-  const HIGH = 19587;
-  try {
-    return parseInt(input) >= LOW && parseInt(input) <= HIGH;
-  } catch (err) {
-    return false;
-  }
-};
+import { isValidStockholmPostCode } from "../libs/utils";
 
 export const AppContext = createContext();
 
@@ -101,15 +92,15 @@ export default class ContextProvider extends Component {
   onSubmitDeliveryAddress = e => {
     e.preventDefault();
     const user = { ...this.state.user };
-    const postCode = e.target.deliveryAddress.value;
+    const postCodeInt = parseInt(e.target.deliveryAddress.value, 10);
 
     // user has valid post code
-    if (isValidStockholmPostCode(postCode)) {
+    if (isValidStockholmPostCode(postCodeInt)) {
       user.hasValidDeliveryAddress = true;
       user.hasPickedDeliveryAddress = true;
 
       user.isFirstVisitOnHomePage = false;
-      user.info.deliveryAddress = postCode;
+      user.info.deliveryAddress = postCodeInt;
       console.log("valid postcode");
       return this.setState({ user });
     }
@@ -125,7 +116,7 @@ export default class ContextProvider extends Component {
     console.log("invalid postcode");
     user.hasPickedDeliveryAddress = true;
     user.hasValidDeliveryAddress = false;
-    user.info.deliveryAddress = postCode;
+    user.info.deliveryAddress = postCodeInt;
     return this.setState({ user });
   };
 

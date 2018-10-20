@@ -21,7 +21,7 @@ export default () => {
 const ProductGallery = ({ TYPE = "soups", showLegend }) => {
   return (
     <React.Fragment>
-      <Columns.Column size={"full"}>
+      <Columns.Column className={"is-full"}>
         <Heading>{TYPE === "soups" ? "Soppor" : "Tillbehör"}</Heading>
         {showLegend ? <Allergenicslegend /> : null}
       </Columns.Column>

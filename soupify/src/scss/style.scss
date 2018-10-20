@@ -12,10 +12,11 @@ a.cart-icon {
     }
 }
 
-$soup_pic  : './assets/img/hero-soup.jpeg'; 
-$PRIMARY_GREEN : #219653;
+$soup_pic_brown           : './assets/img/hero-soup-brown.jpg'; 
+$soup_pic_brown_MIRRORED  : './assets/img/hero-soup-brown-mirrored.png'; 
+
 .hero-background {
-    background-image: url($soup_pic); 
+    background-image: url($soup_pic_brown_MIRRORED); 
     background-size: 100% auto;
     background-position-y: -95px;
     background-repeat: no-repeat; 

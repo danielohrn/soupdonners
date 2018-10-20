@@ -22,7 +22,7 @@ const Thumbnail = ({
         boxShadow: "lightgrey 0px 1px 1px 0px"
       }}
     >
-      <Link to={"/products/" + slug}>
+      <Link to={`/products/${type}/${slug}`}>
         <Image src={img} alt={name} size="3by2" />
       </Link>
 
@@ -86,45 +86,35 @@ const Thumbnail = ({
 
 const Expanded = ({
   product: { img, description, name, price, id, tags, type },
-  addToCart
+  addToCart,
+  location
 }) => {
   return (
-    <div
-      style={{
-        height: "100vh",
-        width: "100vw",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        background: "white",
-        overflow: "scroll",
-        paddingTop: "40px",
-        zIndex: 1
-      }}
-    >
-      <Section>
-        <Link to={"/products"}>
-          <ArrowIcon
-            style={{
-              transform: "rotate(180deg)",
-              position: "fixed",
-              top: 60,
-              left: 25
-            }}
-          />
-        </Link>
-        <Columns>
-          <Columns.Column>
-            <img src={img} alt={name} style={{ width: 500 }} />
-          </Columns.Column>
-
-          <Columns.Column
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between"
-            }}
-          >
+    <div>
+      {/* <Section> */}
+      <Link to={"/products"}>
+        <ArrowIcon
+          style={{
+            transform: "rotate(180deg)",
+            position: "fixed",
+            top: 60,
+            left: 25
+          }}
+        />
+      </Link>
+      <Columns>
+        <Columns.Column>
+          <img src={img} alt={name} style={{ width: "100%" }} />
+        </Columns.Column>
+        <Columns.Column
+          className="is-paddingless"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between"
+          }}
+        >
+          <Section>
             <div>
               <Heading style={{ marginBottom: 5 }}>{name}</Heading>
               <ProductTagsList tags={tags} />
@@ -143,17 +133,19 @@ const Expanded = ({
                 Lägg till i varukorg
               </button>
             </NotificationTrigger>
-          </Columns.Column>
-        </Columns>
-        {type === "soups" ? (
-          <Columns breakpoint={"mobile"}>
-            <Columns.Column className={"is-half-tablet"}>
+          </Section>
+        </Columns.Column>
+      </Columns>
+      {type === "soups" ? (
+        <Columns breakpoint={"mobile"}>
+          <Columns.Column className={"is-half-tablet is-paddingless"}>
+            <Section>
               <Heading size={5}>Lägg till tillbehör</Heading>
               <AddonPicker expanded={true} />
-            </Columns.Column>
-          </Columns>
-        ) : null}
-      </Section>
+            </Section>
+          </Columns.Column>
+        </Columns>
+      ) : null}
     </div>
   );
 };

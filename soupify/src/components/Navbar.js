@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ShoppingCartIcon from "./CartIcon";
-import ContextConsumer from "../context/Consumer";
 import { PRIMARY_GREEN } from "../constants";
 import { LOGOTYPE } from "../libs/images";
 import HambugerMenyIcon from "../assets/HamburgerMenyIcon";
@@ -16,7 +14,7 @@ const Navbar = () => (
       color: "white",
       justifyContent: "space-between",
       alignItems: "center",
-      zIndex: 2,
+      zIndex: 1,
       position: "fixed",
       top: 0,
       width: "100%"
@@ -41,11 +39,6 @@ const Navbar = () => (
       />
     </Link>
     <div style={{ visibility: "hidden" }}>x</div>
-    <ContextConsumer>
-      {({ shoppingCart: { items }, user: { isSignedIn, info } }) => (
-        <ShoppingCartIcon amount={items.length} />
-      )}
-    </ContextConsumer>
   </header>
 );
 
