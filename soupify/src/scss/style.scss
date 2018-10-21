@@ -55,9 +55,7 @@ $soup_pic_brown_MIRRORED  : './assets/img/hero-soup-brown-mirrored.png';
     }
 }
 
-.wrap-mobile {
-    display: flex; 
-}
+.wrap-mobile {display: flex; }
 @media (max-width: 560px) {
     .wrap-mobile {
         display: block; 

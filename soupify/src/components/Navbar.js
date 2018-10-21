@@ -38,6 +38,7 @@ const Navbar = () => (
         style={{ width: 40, height: "100%" }}
       />
     </Link>
+    {/* ---Hack to get `justifyContent: space-between` working --- */}
     <div style={{ visibility: "hidden" }}>x</div>
   </header>
 );

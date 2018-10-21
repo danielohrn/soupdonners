@@ -101,7 +101,15 @@ const state = {
         img:
           "https://cdn-rdb.arla.com/Files/arla-se/1736211522/19050b08-c817-4071-8a51-f837c6697f03.jpg?mode=crop&w=600&h=450&scale=both&ak=f525e733&hm=0f9e5878"
       }
-    ]
+    ],
+
+    greetingCard: {
+      name: "Greeting Card",
+      description: "Lägg till en hälsning till din beställning",
+      type: "greeting",
+      price: 20,
+      id: generateId()
+    }
   },
 
   shoppingCart: {
@@ -123,7 +131,7 @@ const state = {
       //   price: 99,
       //   description: "Soppan är god bror",
       //   img: soup1,
-      //   quantity: 1
+      //   quantity: 1,
       // },
       total: 0
     }

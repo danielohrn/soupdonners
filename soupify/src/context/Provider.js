@@ -48,7 +48,6 @@ export default class ContextProvider extends Component {
     if (productToAdd) {
       shoppingCart.items.push(productToAdd);
       this.setState({ shoppingCart }, this.updateOrderSummary);
-      // this.showNotification();
     }
   };
 
@@ -96,24 +95,24 @@ export default class ContextProvider extends Component {
 
     // user has valid post code
     if (isValidStockholmPostCode(postCodeInt)) {
+      console.log("valid postcode");
       user.hasValidDeliveryAddress = true;
       user.hasPickedDeliveryAddress = true;
 
-      user.isFirstVisitOnHomePage = false;
       user.info.deliveryAddress = postCodeInt;
-      console.log("valid postcode");
       return this.setState({ user });
     }
 
     // invalid postcode and had a valid postcode before
     if (user.hasValidDeliveryAddress) {
+      console.log("invalid postcode and had a valid postcode before");
       user.hasValidDeliveryAddress = false;
       user.info.deliveryAddress = null;
       return this.setState({ user });
     }
 
     // invalid post code and did not previously enter post code
-    console.log("invalid postcode");
+    console.log("invalid post code and did not previously enter post code");
     user.hasPickedDeliveryAddress = true;
     user.hasValidDeliveryAddress = false;
     user.info.deliveryAddress = postCodeInt;

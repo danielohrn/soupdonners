@@ -73,7 +73,7 @@ const Thumbnail = ({
                 Lägg till i varukorgen
               </button>
             </NotificationTrigger>
-            <Link className="button is-text" to={"/products/" + slug}>
+            <Link className="button is-text" to={`/products/${type}/${slug}`}>
               Läs mer om innehållet
             </Link>
           </div>
