@@ -8,6 +8,7 @@ import Heading from "react-bulma-components/lib/components/heading";
 import Button from "react-bulma-components/lib/components/button";
 import PostCodeForm from "../components/PostCodeForm";
 import { STEPS } from "../libs/images";
+import { PRIMARY_GREEN } from "../constants";
 
 export default class HomePage extends React.Component {
   render() {
@@ -41,7 +42,16 @@ const HeroSection = () => {
           <br />
           <PostCodeForm style={{ maxWidth: 480 }} />
           <Link to={"/products"}>
-            <Button>Se vår meny</Button> <br />
+            <Button
+              style={{
+                background: PRIMARY_GREEN,
+                border: "none",
+                color: "white"
+              }}
+            >
+              Se vår meny
+            </Button>{" "}
+            <br />
           </Link>
         </Hero.Body>
       </Hero>
