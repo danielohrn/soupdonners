@@ -12,6 +12,7 @@ export default class AddonPicker extends React.Component {
   render() {
     const { isExpanded } = this.state;
     const { showHeader } = this.props;
+    console.log(this.props);
     return (
       <div
         style={{
