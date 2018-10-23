@@ -131,35 +131,9 @@ const state = {
   },
 
   shoppingCart: {
-    items: [
-      {
-        title: "Morotssoppa",
-        name: "Värmande morotsoppa med ingefära och chili",
-        type: "soups",
-        id: 1,
-        price: 99,
-        description:
-          "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
-        tags: ["milk", "gluten"],
-        img: soup1,
-        hasAddonOptions: true
-      }
-    ],
+    items: [],
     orderSummary: {
-      total: 99,
-      "Värmande morotsoppa med ingefära och chili": {
-        title: "Morotssoppa",
-        name: "Värmande morotsoppa med ingefära och chili",
-        type: "soups",
-        id: 1,
-        price: 99,
-        description:
-          "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
-        tags: ["milk", "gluten"],
-        img: soup1,
-        hasAddonOptions: true,
-        quantity: 1
-      }
+      total: 0
     }
   },
 

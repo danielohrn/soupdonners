@@ -29,9 +29,8 @@ export default () => {
                   subtitle
                   size={5}
                 >
-                  Ditt ordernummer:
+                  Ditt ordernummer: <span>117</span>
                 </Heading>
-                <span>#117</span>
                 {/* <img
                   src={bikeIcon}
                   style={{
@@ -40,11 +39,12 @@ export default () => {
                 /> */}
                 {Object.keys(products).map(key => (
                   <div>
-                    <p>{products[key].name}</p>
-                    {JSON.stringify(products[key])}
+                    <p>
+                      {products[key].name} {products[key].quantity} st
+                    </p>
                   </div>
                 ))}
-                {total} kr
+                Total kostnad {total} kr
               </Section>
             </Columns.Column>
           </Columns>

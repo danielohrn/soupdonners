@@ -35,31 +35,28 @@ export var ALLERGENICS = {
   }
 };
 
-<<<<<<< HEAD
 export const questionMark = require("../assets/img/question-mark.png");
-=======
 export var TESTIMONIALS = [
   {
-    name: 'Testi 1',
-    quote: 'Älskar dessa soppor',
+    name: "Testi 1",
+    quote: "Älskar dessa soppor",
     image: require("../assets/img/testimonial-1.jpg")
   },
   {
-    name: 'Testi 2',
-    quote: 'Så skönt att slippa laga middag',
+    name: "Testi 2",
+    quote: "Så skönt att slippa laga middag",
     image: require("../assets/img/testimonial-2.jpg")
   },
   {
-    name: 'Testi 3',
-    quote: 'Leveransen gick hur smidigt som helst',
+    name: "Testi 3",
+    quote: "Leveransen gick hur smidigt som helst",
     image: require("../assets/img/testimonial-3.jpg")
   },
   {
-    name: 'Testi 4',
-    quote: 'Att bli överraskad med soppa är mycket roligare än blommor',
+    name: "Testi 4",
+    quote: "Att bli överraskad med soppa är mycket roligare än blommor",
     image: require("../assets/img/testimonial-4.jpg")
   }
-]
->>>>>>> master
+];
 
 export const LOGOTYPE = require("../assets/img/soupify-logo.png");
