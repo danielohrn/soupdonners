@@ -10,22 +10,28 @@ export default () => {
   return (
     <React.Fragment>
       {TESTIMONIALS.map(testimonial => (
-        <Columns.Column>
+        <Columns.Column
+        >
           <div style={{
               display: 'flex',
               justifyContent: 'center',
               flexWrap: "wrap",
-
+              marginBottom: "2rem"
           }}>
+          <div style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              }}>
             <Image
               src={testimonial.image}
               className="testimonial-image"
-              
+              style={{width: "75%", height: "75%"}}
             />
-
+            </div>
             <Content>
             <Header style={{textAlign: "center", color: "white", marginTop: "15px"}}>{testimonial.name}</Header>
-            <p className="subtitle is-4" style={{fontStyle: "italic", color: "white" }}>"{testimonial.quote}"</p>
+            <p className="subtitle is-4" style={{fontStyle: "italic", color: "white", textAlign: "center" }}>"{testimonial.quote}"</p>
             </Content>
           </div>
         </Columns.Column>

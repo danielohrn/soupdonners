@@ -101,9 +101,18 @@ const HowDoesItWork = () => {
 
 const TestimonialsSection = () => {
   return (
-    <Section className="hero is-bold" size={'medium'} style={{
+    <Section className="hero is-bold" style={{
       backgroundColor: PRIMARY_GREEN
     }}>
+    
+      <div class="hero-body">
+      <div class="container has-text-centered">
+      <Heading size={"1"} style={{color: "white", margin: "2rem 0rem"}}>
+      Från Kunder
+      </Heading>
+      </div> 
+      </div>
+    
     <Columns>
 
     <Testimonial/>
