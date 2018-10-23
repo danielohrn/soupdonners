@@ -15,7 +15,6 @@ const Thumbnail = ({
   product: { name, img, price, id, tags, type, title, hasAddonOptions }
 }) => {
   const slug = name.replace(/\s/gi, "-").toLowerCase();
-  console.log(hasAddonOptions);
   return (
     <div
       style={{

@@ -1,5 +1,5 @@
 import images from "../libs/images";
-let { soup1, soup2, soup3, soup4, soup5, soup6 } = images;
+let { soup1, soup2, soup3, soup4, soup5, soup6, greetingCard } = images;
 
 const generateId = (start => () => ++start)(0);
 
@@ -120,11 +120,13 @@ const state = {
       }
     ],
     greetingCard: {
-      name: "Greeting Card",
-      description: "Lägg till en hälsning till din beställning",
-      type: "greeting",
-      price: 20,
-      id: generateId()
+      name: "Personlig hälsning",
+      description:
+        "Vill du lägga till en personlig hälsning till din beställning?",
+      type: "greetingCard",
+      price: 25,
+      id: generateId(),
+      img: greetingCard
     }
   },
 

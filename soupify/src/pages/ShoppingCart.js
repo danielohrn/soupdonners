@@ -12,6 +12,7 @@ import PaymentForm from "../components/PaymentForm";
 import { checkoutFormScrollAndFocusHandler } from "../libs/utils";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { PRIMARY_BUTTON } from "../constants";
+import GreetingCard from "../components/GreetingCard";
 
 export default ({ match }) => {
   return (
@@ -23,6 +24,7 @@ export default ({ match }) => {
             removeFromCart,
             removeAllProductTypesFromCart,
             shoppingCart: { orderSummary },
+            products: { greetingCard },
             user: { hasPickedDeliveryAddress, hasValidDeliveryAddress, info }
           }) => {
             const { total, ...products } = orderSummary;
@@ -53,6 +55,12 @@ export default ({ match }) => {
                             showHeader={false}
                           />
                         </React.Fragment>
+                      </Columns.Column>
+                      <Columns.Column className={"is-full"}>
+                        <GreetingCard
+                          greetingCard={greetingCard}
+                          addToCart={addToCart}
+                        />
                       </Columns.Column>
                     </Columns>
                   </Columns.Column>
@@ -109,15 +117,20 @@ const ProductsSummaryList = ({
 }) => {
   return Object.keys(products)
     .sort((a, b) => a > b)
-    .map(product => (
-      <ProductSummary
-        key={product}
-        product={products[product]}
-        addToCart={addToCart}
-        removeFromCart={removeFromCart}
-        removeAllProductTypesFromCart={removeAllProductTypesFromCart}
-      />
-    ));
+    .map(product => {
+      return (
+        <ProductSummary
+          showQuantityPicker={
+            products[product].type === "greetingCard" ? false : true
+          }
+          key={product}
+          product={products[product]}
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+          removeAllProductTypesFromCart={removeAllProductTypesFromCart}
+        />
+      );
+    });
 };
 
 class GoToCheckoutBanner extends React.Component {
@@ -131,7 +144,7 @@ class GoToCheckoutBanner extends React.Component {
     return (
       <div className="checkout-banner">
         <div>
-          <Heading size={4} style={{ display: "inline", marginRight: 10 }}>
+          <Heading size={4} style={{ marginRight: 10, display: "inline" }}>
             Totalsumma
           </Heading>
           <span style={{ fontSize: 25 }}>{total} kr</span>

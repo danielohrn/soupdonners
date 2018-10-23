@@ -44,9 +44,16 @@ export default class ContextProvider extends Component {
   addToCart = (id, PRODUCT_TYPE = "soups") => {
     const shoppingCart = { ...this.state.shoppingCart };
     // find product that matches with provided id and product type
-    const productToAdd = this.state.products[PRODUCT_TYPE].filter(
-      product => product.id === id
-    )[0];
+    let productToAdd;
+    try {
+      // if product is soup or sides (array of products)
+      productToAdd = this.state.products[PRODUCT_TYPE].filter(
+        product => product.id === id
+      )[0];
+    } catch (err) {
+      // if not array, object (greeting card)
+      productToAdd = this.state.products[PRODUCT_TYPE];
+    }
 
     // if product found add it to cart and update ordersummary
     if (productToAdd) {

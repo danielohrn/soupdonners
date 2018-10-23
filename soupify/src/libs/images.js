@@ -4,7 +4,8 @@ export default {
   soup3: require("../assets/img/soup3.jpg"),
   soup4: require("../assets/img/soup4.jpg"),
   soup5: require("../assets/img/soup5.jpg"),
-  soup6: require("../assets/img/soup6.jpg")
+  soup6: require("../assets/img/soup6.jpg"),
+  greetingCard: require("../assets/img/get-well-card.jpg")
 };
 
 export const heroVideo = require("../assets/img/steaming.mp4");
@@ -33,5 +34,7 @@ export var ALLERGENICS = {
     image: require("../assets/img/vegan.svg")
   }
 };
+
+export const questionMark = require("../assets/img/question-mark.png");
 
 export const LOGOTYPE = require("../assets/img/soupify-logo.png");
