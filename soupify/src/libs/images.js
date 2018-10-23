@@ -17,11 +17,11 @@ export var STEPS = {
 
 export var ALLERGENICS = {
   gluten: {
-    description: "Innehåller gluten",
+    description: "Gluten",
     image: require("../assets/img/gluten.svg")
   },
   milk: {
-    description: "Innehåller mjölk",
+    description: "Mjölk",
     image: require("../assets/img/milk.svg")
   },
   vegetarian: {
