@@ -34,7 +34,7 @@ export default class GreetingCard extends Component {
     return showForm ? (
       <React.Fragment>
         <Heading size={4} style={{ position: "relative" }}>
-          {this.props.greetingCard.description}
+          Lägg till en personlig hälsning
           <img
             src={questionMark}
             style={{

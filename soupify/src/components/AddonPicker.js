@@ -31,14 +31,13 @@ export default class AddonPicker extends React.Component {
           <ul>
             <Consumer>
               {({ addToCart, products }) =>
-                products[this.props.productType].map((product, index) => (
+                products[this.props.productType].map(product => (
                   <li
                     key={product.name}
                     style={{
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between"
-                      // background: index % 2 === 0 ? "#d3d3d34d" : null
                     }}
                   >
                     <div

@@ -53,7 +53,6 @@ export default class ProductSummary extends React.Component {
             <h2 className="has-text-weight-semibold">
               {this.props.product.name}
             </h2>
-            {/* <p>{description}</p> */}
             <p>{this.props.product.price} kr / styck</p>
           </Columns.Column>
           <Columns.Column size={"half"}>
