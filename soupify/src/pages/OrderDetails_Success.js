@@ -1,17 +1,57 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import Section from "react-bulma-components/lib/components/section";
+import Columns from "react-bulma-components/lib/components/columns";
+import Heading from "react-bulma-components/lib/components/heading";
+
+import bikeIcon from "../assets/img/iconmonstr-bicycle-4.svg";
+import DeliveryVespa from "../components/DeliveryVespa";
 import ContextConsumer from "../context/Consumer";
 
 export default () => {
   return (
     <div>
       <ContextConsumer>
-        {({ shoppingCart: { orderSummary } }) =>
-          orderSummary.total ? (
-            <div>Ayyeee grattis soppan är på gång</div>
-          ) : (
-            <Redirect to={"/"} />
-          )
+        {({
+          shoppingCart: {
+            orderSummary: { total, ...products }
+          }
+        }) => (
+          // orderSummary.total ? (
+          <Columns>
+            <Columns.Column>
+              <Section style={{ textAlign: "center" }}>
+                <Heading>Tack för din beställning!</Heading>
+                <Heading
+                  style={{
+                    marginTop: 30
+                  }}
+                  subtitle
+                  size={5}
+                >
+                  Ditt ordernummer:
+                </Heading>
+                <span>#117</span>
+                {/* <img
+                  src={bikeIcon}
+                  style={{
+                    height: 300
+                  }}
+                /> */}
+                {Object.keys(products).map(key => (
+                  <div>
+                    <p>{products[key].name}</p>
+                    {JSON.stringify(products[key])}
+                  </div>
+                ))}
+                {total} kr
+              </Section>
+            </Columns.Column>
+          </Columns>
+        )
+        // ) : (
+        //   <Redirect to={"/"} />
+        // )
         }
       </ContextConsumer>
     </div>

@@ -53,7 +53,6 @@ export default class ProductSummary extends React.Component {
             <h2 className="has-text-weight-semibold">
               {this.props.product.name}
             </h2>
-            {/* <p>{description}</p> */}
             <p>{this.props.product.price} kr / styck</p>
           </Columns.Column>
           <Columns.Column size={"half"}>
@@ -64,33 +63,35 @@ export default class ProductSummary extends React.Component {
               Ta bort artikeln
             </button>
           </Columns.Column>
-          <Columns.Column size={"half"}>
-            <button
-              className="button"
-              onClick={() =>
-                this.props.removeFromCart(
-                  this.props.product.id,
-                  this.props.product.type
-                )
-              }
-            >
-              -
-            </button>
-            <span style={{ display: "inline-block", margin: ".5em" }}>
-              {this.props.product.quantity}
-            </span>
-            <button
-              className="button"
-              onClick={() =>
-                this.props.addToCart(
-                  this.props.product.id,
-                  this.props.product.type
-                )
-              }
-            >
-              +
-            </button>
-          </Columns.Column>
+          {this.props.showQuantityPicker === false ? null : (
+            <Columns.Column size={"half"}>
+              <button
+                className="button"
+                onClick={() =>
+                  this.props.removeFromCart(
+                    this.props.product.id,
+                    this.props.product.type
+                  )
+                }
+              >
+                -
+              </button>
+              <span style={{ display: "inline-block", margin: ".5em" }}>
+                {this.props.product.quantity}
+              </span>
+              <button
+                className="button"
+                onClick={() =>
+                  this.props.addToCart(
+                    this.props.product.id,
+                    this.props.product.type
+                  )
+                }
+              >
+                +
+              </button>
+            </Columns.Column>
+          )}
         </Columns>
       </div>
     );

@@ -1,5 +1,5 @@
 import images from "../libs/images";
-let { soup1, soup2, soup3, soup4, soup5, soup6 } = images;
+let { soup1, soup2, soup3, soup4, soup5, soup6, greetingCard } = images;
 
 const generateId = (start => () => ++start)(0);
 
@@ -120,18 +120,46 @@ const state = {
       }
     ],
     greetingCard: {
-      name: "Greeting Card",
-      description: "Lägg till en hälsning till din beställning",
-      type: "greeting",
-      price: 20,
-      id: generateId()
+      name: "Personlig hälsning",
+      description:
+        "Vill du lägga till en personlig hälsning till din beställning?",
+      type: "greetingCard",
+      price: 25,
+      id: generateId(),
+      img: greetingCard
     }
   },
 
   shoppingCart: {
-    items: [],
+    items: [
+      {
+        title: "Morotssoppa",
+        name: "Värmande morotsoppa med ingefära och chili",
+        type: "soups",
+        id: 1,
+        price: 99,
+        description:
+          "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
+        tags: ["milk", "gluten"],
+        img: soup1,
+        hasAddonOptions: true
+      }
+    ],
     orderSummary: {
-      total: 0
+      total: 99,
+      "Värmande morotsoppa med ingefära och chili": {
+        title: "Morotssoppa",
+        name: "Värmande morotsoppa med ingefära och chili",
+        type: "soups",
+        id: 1,
+        price: 99,
+        description:
+          "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
+        tags: ["milk", "gluten"],
+        img: soup1,
+        hasAddonOptions: true,
+        quantity: 1
+      }
     }
   },
 

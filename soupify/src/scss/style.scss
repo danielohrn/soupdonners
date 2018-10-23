@@ -66,8 +66,8 @@ $soup_pic_brown_MIRRORED  : './assets/img/hero-soup-brown-mirrored.png';
 .checkout-banner {
 
     display: flex;
-    flex-direction: column; 
-    justify-content: flex-end;
+    // flex-direction: column; 
+    justify-content: space-between;
     padding-left: 1em; 
 
     button {
@@ -88,8 +88,8 @@ $soup_pic_brown_MIRRORED  : './assets/img/hero-soup-brown-mirrored.png';
         width: 100%;
         padding: 2em 1em;
         border: 1px solid lightgrey;
-        justify-content: space-between;
-        align-items: center;
+        // justify-content: space-between;
+        // align-items: center;
         background: white;
         z-index: 1; 
         flex-wrap: wrap; 
