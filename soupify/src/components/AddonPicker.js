@@ -2,6 +2,7 @@ import React from "react";
 import Consumer from "../context/Consumer";
 import { Link } from "react-router-dom";
 import NotificationTrigger from "./NotificationTrigger";
+import { PRIMARY_GREEN } from "../constants";
 
 export default class AddonPicker extends React.Component {
   state = {
@@ -16,7 +17,6 @@ export default class AddonPicker extends React.Component {
         style={{
           cursor: "pointer",
           margin: "10px 0"
-          // boxShadow: "lightgrey 0px 1px 1px 0px"
         }}
       >
         <p
@@ -29,14 +29,15 @@ export default class AddonPicker extends React.Component {
         {isExpanded ? (
           <ul>
             <Consumer>
-              {({ addToCart, products: { sides } }) =>
-                sides.map(side => (
+              {({ addToCart, products }) =>
+                products[this.props.productType].map((product, index) => (
                   <li
-                    key={side.name}
+                    key={product.name}
                     style={{
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between"
+                      // background: index % 2 === 0 ? "#d3d3d34d" : null
                     }}
                   >
                     <div
@@ -46,26 +47,31 @@ export default class AddonPicker extends React.Component {
                       }}
                     >
                       <Link
-                        to={`/products/${side.type}/${side.name
+                        to={`/products/${product.type}/${product.name
                           .replace(/\s/gi, "-")
                           .toLowerCase()}`}
                       >
                         <img
-                          alt={side.name}
+                          alt={product.name}
                           style={{ width: 50 }}
-                          src={side.img}
+                          src={product.img}
                         />
                       </Link>
-                      <span style={{ margin: "0 10px" }}>{side.name}</span>
-                      <b>{side.price} kr</b>
+                      <span style={{ margin: "0 10px" }}>{product.name}</span>
+                      <b>{product.price} kr</b>
                     </div>
                     <NotificationTrigger
-                      message={side.name + " tillagd i varukorgen!"}
+                      message={product.name + " tillagd i varukorgen!"}
                     >
                       <button
-                        style={{ margin: "0 10px" }}
+                        style={{
+                          margin: "0 10px",
+                          border: `1px solid ${PRIMARY_GREEN}`,
+                          background: "white",
+                          color: PRIMARY_GREEN
+                        }}
                         className="button is-small"
-                        onClick={() => addToCart(side.id, "sides")}
+                        onClick={() => addToCart(product.id, product.type)}
                       >
                         Lägg till
                       </button>

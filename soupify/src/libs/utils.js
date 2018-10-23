@@ -6,7 +6,7 @@ export const isValidStockholmPostCode = input => {
 };
 
 export const checkoutFormScrollAndFocusHandler = e => {
-  e.preventDefault();
+  // e.preventDefault();
   const MOBILE_BREAKPOINT = 790;
   const BOTTOM_OF_WINDOW = window.document.body.getBoundingClientRect().bottom;
 

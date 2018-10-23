@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { PRIMARY_GREEN } from "../constants";
 import { LOGOTYPE } from "../libs/images";
 import HambugerMenyIcon from "../assets/HamburgerMenyIcon";
+import Nav from "./Nav";
 
 const Navbar = () => (
   <header
@@ -40,6 +41,8 @@ const Navbar = () => (
     </Link>
     {/* ---Hack to get `justifyContent: space-between` working --- */}
     <div style={{ visibility: "hidden" }}>x</div>
+
+    <Nav />
   </header>
 );
 

@@ -9,8 +9,8 @@ import ProductsPage from "./pages/ProductsPage";
 import ShoppingCart from "./pages/ShoppingCart";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
-import CheckoutPage from "./pages/CheckoutPage";
 import SingleProduct from "./pages/SingleProduct";
+import OrderDetails_Success from "./pages/OrderDetails_Success";
 
 import NoSoupForYou_404 from "./pages/404";
 
@@ -52,9 +52,9 @@ const routes = [
     exact: false
   },
   {
-    slug: "/checkout",
-    name: "Checkout",
-    component: CheckoutPage,
+    slug: "/order-details",
+    name: "Success",
+    component: OrderDetails_Success,
     exact: false
   },
   {

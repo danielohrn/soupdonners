@@ -8,18 +8,7 @@ export default () => {
       <ContextConsumer>
         {({ shoppingCart: { orderSummary } }) =>
           orderSummary.total ? (
-            <div>
-              <p>
-                Att betala: {orderSummary.total}
-                kr
-              </p>
-              <form>
-                <input type="text" placeholder="Kortnummer" />
-                <button onClick={e => e.preventDefault()} type="submit">
-                  Betala
-                </button>
-              </form>
-            </div>
+            <div>Ayyeee grattis soppan är på gång</div>
           ) : (
             <Redirect to={"/"} />
           )

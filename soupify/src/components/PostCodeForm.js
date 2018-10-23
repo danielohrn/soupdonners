@@ -34,7 +34,7 @@ const PostCodeForm = ({ style, match }) => (
             >
               <input
                 autoComplete="off"
-                id="deliveryAddress"
+                id="postCode"
                 className="input"
                 type="number"
                 placeholder="Ange postnummer"
