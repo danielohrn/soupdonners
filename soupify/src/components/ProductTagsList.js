@@ -3,14 +3,20 @@ import { ALLERGENICS } from "../libs/images";
 
 export default ({ tags }) => {
   return (
-    <ul>
+    <div  style={{
+      display: "flex",
+      margin: "10px 0px"
+    }}
+    >
       {tags.map(tagName => {
         return (
-          <li
+          <div
             key={tagName}
             style={{
               marginRight: 5,
-              display: "inline-block"
+              display: "flex",
+              alignItems: "center",
+              marginRight: "5px"
             }}
           >
             <img
@@ -19,9 +25,10 @@ export default ({ tags }) => {
               style={{ width: 30 }}
               alt={tagName}
             />
-          </li>
+            <span> { ALLERGENICS[tagName].description } </span>
+          </div>
         );
       })}
-    </ul>
+    </div>
   );
 };

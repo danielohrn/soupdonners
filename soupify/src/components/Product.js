@@ -40,19 +40,18 @@ const Thumbnail = ({
           }}
         >
           <div>
-            <div style={{ display: "flex", alignItems: "center" }}>
+
               <Heading
                 size={4}
                 style={{
                   marginBottom: 5,
                   marginRight: 5,
-                  display: "inline-block"
                 }}
               >
                 {title || name}
               </Heading>
               <ProductTagsList tags={tags} />
-            </div>
+
             <Heading subtitle size={6} style={{ marginBottom: 5 }}>
               {name}
             </Heading>
@@ -137,7 +136,13 @@ const Expanded = ({
                 Lägg till i varukorg
               </button>
             </NotificationTrigger>
+
           </Section>
+          <Section size="small">
+              <Heading size={5}>Lägg till tillbehör</Heading>
+              <AddonPicker expanded={true} />
+              </Section>
+
         </Columns.Column>
       </Columns>
       {type === "soups" ? (

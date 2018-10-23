@@ -23,7 +23,6 @@ const ProductGallery = ({ TYPE = "soups", showLegend }) => {
     <React.Fragment>
       <Columns.Column className={"is-full"}>
         <Heading>{TYPE === "soups" ? "Soppor" : "Tillbehör"}</Heading>
-        {showLegend ? <Allergenicslegend /> : null}
       </Columns.Column>
       <ContextConsumer>
         {({ products, addToCart }) =>
