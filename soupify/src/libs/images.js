@@ -34,4 +34,27 @@ export var ALLERGENICS = {
   }
 };
 
+export var TESTIMONIALS = [
+  {
+    name: 'Testi 1',
+    quote: 'FAKKING ÄLSKAR SOPPOR',
+    image: require("../assets/img/testimonial-1.jpg")
+  },
+  {
+    name: 'Testi 2',
+    quote: 'BÄSTA I LIVET, SVÄR',
+    image: require("../assets/img/testimonial-2.jpg")
+  },
+  {
+    name: 'Testi 3',
+    quote: 'HELA DAN, VARJE DA',
+    image: require("../assets/img/testimonial-3.jpg")
+  },
+  {
+    name: 'Testi 4',
+    quote: 'SOPPA TILL ALLAS DÖRR',
+    image: require("../assets/img/testimonial-4.jpg")
+  }
+]
+
 export const LOGOTYPE = require("../assets/img/soupify-logo.png");
