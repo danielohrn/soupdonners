@@ -10,6 +10,10 @@ export default class ContextProvider extends Component {
     this.state = STATE;
   }
 
+  toggleNavBar = () => {
+    this.setState({ isNavBarOpen: !this.state.isNavBarOpen });
+  };
+
   register = e => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -88,10 +92,31 @@ export default class ContextProvider extends Component {
     this.setState({ user });
   };
 
+  onPay = () => {
+    const user = { ...this.state.user };
+    const paymentPending = { ...user, payment: { isActive: true } };
+    const paymentDone = { ...user, payment: { isActive: false, isDone: true } };
+    // payment pending
+    this.setState({ user: paymentPending }, () => {
+      // fake latency
+      setTimeout(() => {
+        // payment done
+        this.setState({ user: paymentDone });
+      }, 1500);
+    });
+  };
+
   onSubmitDeliveryAddress = e => {
     e.preventDefault();
-    const user = { ...this.state.user };
-    const postCodeInt = parseInt(e.target.deliveryAddress.value, 10);
+
+    const user = {
+      ...this.state.user,
+      info: {
+        ...this.state.user.info,
+        firstName: e.target.firstName ? e.target.firstName.value : null
+      }
+    };
+    const postCodeInt = parseInt(e.target.postCode.value, 10);
 
     // user has valid post code
     if (isValidStockholmPostCode(postCodeInt)) {
@@ -133,7 +158,10 @@ export default class ContextProvider extends Component {
           removeFromCart: this.removeFromCart,
           removeAllProductTypesFromCart: this.removeAllProductTypesFromCart,
           onSubmitDeliveryAddress: this.onSubmitDeliveryAddress,
-          resetDeliveryAddress: this.resetDeliveryAddress
+          resetDeliveryAddress: this.resetDeliveryAddress,
+          onPay: this.onPay,
+          toggleNavBar: this.toggleNavBar,
+          isNavBarOpen: this.state.isNavBarOpen
         }}
       >
         {this.props.children}

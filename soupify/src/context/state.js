@@ -15,7 +15,8 @@ const state = {
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: ["milk", "gluten"],
-        img: soup1
+        img: soup1,
+        hasAddonOptions: true
       },
       {
         name: "Fiskoppa",
@@ -25,7 +26,8 @@ const state = {
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: ["milk", "gluten"],
-        img: soup2
+        img: soup2,
+        hasAddonOptions: false
       },
       {
         name: "Linssoppa",
@@ -35,7 +37,8 @@ const state = {
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: ["milk", "gluten"],
-        img: soup3
+        img: soup3,
+        hasAddonOptions: true
       },
       {
         name: "Broccolisoppa",
@@ -45,7 +48,8 @@ const state = {
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: ["milk", "gluten"],
-        img: soup4
+        img: soup4,
+        hasAddonOptions: false
       },
       {
         name: "Potatissoppa",
@@ -55,7 +59,8 @@ const state = {
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: ["milk", "gluten", "vegan"],
-        img: soup5
+        img: soup5,
+        hasAddonOptions: true
       },
       {
         name: "Spenatsoppa",
@@ -65,7 +70,8 @@ const state = {
         description:
           "Skydda dig mot höstens förkylningar med vår fiberrika morotsoppa som är boostad med ingefära som stärker immunförsvaret och ökar kroppens blodcirkulation.",
         tags: ["milk", "gluten", "vegetarian"],
-        img: soup6
+        img: soup6,
+        hasAddonOptions: false
       }
     ],
 
@@ -103,6 +109,16 @@ const state = {
       }
     ],
 
+    addons: [
+      {
+        name: "Extra ärtor",
+        type: "addons",
+        price: 10,
+        id: generateId(),
+        description: "Köp extra ärtor",
+        img: null
+      }
+    ],
     greetingCard: {
       name: "Greeting Card",
       description: "Lägg till en hälsning till din beställning",
@@ -113,26 +129,8 @@ const state = {
   },
 
   shoppingCart: {
-    items: [
-      // {
-      //   title: "Morotssoppa",
-      //   name: "Värmande morotsoppa med ingefära och chili",
-      //   id: 1,
-      //   price: 99,
-      //   description: "Soppan är god bror",
-      //   img: soup1
-      // }
-    ],
+    items: [],
     orderSummary: {
-      // Morotssopppa: {
-      //   title: "Morotssoppa",
-      //   name: "Värmande morotsoppa med ingefära och chili",
-      //   id: 1,
-      //   price: 99,
-      //   description: "Soppan är god bror",
-      //   img: soup1,
-      //   quantity: 1,
-      // },
       total: 0
     }
   },
@@ -143,11 +141,19 @@ const state = {
     hasPickedDeliveryAddress: false,
     isSignedIn: false,
     info: {
-      name: null,
+      firstName: null,
+      lastName: null,
+      phone: null,
       email: null,
       deliveryAddress: null
+    },
+    payment: {
+      isActive: false,
+      isDone: false
     }
-  }
+  },
+
+  isNavBarOpen: false
 };
 
 export default state;

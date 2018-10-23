@@ -66,11 +66,15 @@ $soup_pic_brown_MIRRORED  : './assets/img/hero-soup-brown-mirrored.png';
 .checkout-banner {
 
     display: flex;
+    flex-direction: column; 
     justify-content: flex-end;
+    padding-left: 1em; 
+
     button {
         display: none; 
     }
 }
+
 @media (max-width: 790px) {
 
     .column.payment-form {

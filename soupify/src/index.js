@@ -9,9 +9,9 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <Router>
-    <ScrollTop>
-      <App />
-    </ScrollTop>
+    {/* <ScrollTop> */}
+    <App />
+    {/* </ScrollTop> */}
   </Router>,
   document.getElementById("root")
 );

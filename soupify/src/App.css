@@ -10,7 +10,7 @@ a {
   text-decoration: none; 
 }
 
-@keyframes boing {
+@keyframes swoosh-in-from-top {
   from {
     transform: translateY(-100%); 
   }
@@ -32,6 +32,15 @@ a {
 @keyframes swoosh-in-from-left {
   from {
     transform: translateX(-100%)
+  }
+
+  to {
+    transform: translateX(0); 
+  }
+}
+@keyframes swoosh-in-from-right {
+  from {
+    transform: translateX(100%)
   }
 
   to {

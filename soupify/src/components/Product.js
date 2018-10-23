@@ -12,9 +12,10 @@ import NotificationTrigger from "./NotificationTrigger";
 
 const Thumbnail = ({
   addToCart,
-  product: { name, img, price, id, tags, type, title }
+  product: { name, img, price, id, tags, type, title, hasAddonOptions }
 }) => {
   const slug = name.replace(/\s/gi, "-").toLowerCase();
+  console.log(hasAddonOptions);
   return (
     <div
       style={{
@@ -59,7 +60,13 @@ const Thumbnail = ({
 
             <p style={{ fontSize: "1.5em" }}>{price} kr</p>
           </div>
-          <div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap"
+            }}
+          >
             <NotificationTrigger message={"Tillagd i varukorgen!"}>
               <button
                 className="button"
@@ -78,20 +85,18 @@ const Thumbnail = ({
             </Link>
           </div>
         </div>
-        <AddonPicker />
+        <AddonPicker productType={"sides"} />
       </div>
     </div>
   );
 };
 
 const Expanded = ({
-  product: { img, description, name, price, id, tags, type },
-  addToCart,
-  location
+  product: { img, description, name, price, id, tags, type, hasAddonOptions },
+  addToCart
 }) => {
   return (
     <div>
-      {/* <Section> */}
       <Link to={"/products"}>
         <ArrowIcon
           style={{
@@ -141,7 +146,7 @@ const Expanded = ({
           <Columns.Column className={"is-half-tablet is-paddingless"}>
             <Section>
               <Heading size={5}>Lägg till tillbehör</Heading>
-              <AddonPicker expanded={true} />
+              <AddonPicker productType={"sides"} expanded={true} />
             </Section>
           </Columns.Column>
         </Columns>

@@ -6460,7 +6460,9 @@ a.cart-icon:active, a.cart-icon:hover {
 
 .checkout-banner {
   display: flex;
-  justify-content: flex-end; }
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 1em; }
   .checkout-banner button {
     display: none; }
 

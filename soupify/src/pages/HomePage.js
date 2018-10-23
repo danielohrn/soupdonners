@@ -14,17 +14,7 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <div>
-        {/* <Columns>
-          <Columns.Column size={"two-thirds"}> */}
         <HeroSection />
-        {/* </Columns.Column>
-          <Columns.Column className="reviews">
-            <Section>
-              <Heading>Vill vi ha något här?</Heading>
-              <Heading subtitle>Kanske typ reviews?</Heading>
-            </Section>
-          </Columns.Column>
-        </Columns> */}
         <HowDoesItWork />
       </div>
     );
@@ -36,7 +26,7 @@ const HeroSection = () => {
     <Section className="hero-background">
       <Hero>
         <Hero.Body>
-          <Heading>Hälsosamma soppor</Heading>
+          <Heading>Soppogram</Heading>
           <br />
           <Heading size={5}>Vi levererar i Stockholms innerstad</Heading>
           <br />
