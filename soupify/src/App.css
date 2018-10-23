@@ -58,3 +58,7 @@ a {
     transform: translateX(200%); 
   }
 }
+
+.testimonial-image > * {
+  border-radius: 50%;
+}

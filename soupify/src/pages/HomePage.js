@@ -9,6 +9,7 @@ import Button from "react-bulma-components/lib/components/button";
 import PostCodeForm from "../components/PostCodeForm";
 import { STEPS } from "../libs/images";
 import { PRIMARY_GREEN } from "../constants";
+import Testimonial from "../components/Testimonial";
 
 export default class HomePage extends React.Component {
   render() {
@@ -16,6 +17,7 @@ export default class HomePage extends React.Component {
       <div>
         <HeroSection />
         <HowDoesItWork />
+        <TestimonialsSection/>
       </div>
     );
   }
@@ -64,12 +66,12 @@ const HowDoesItWork = () => {
           />
         </Column>
         <Column>
-          <h2 style={h2}>Välj en av våra hälsomsamma soppor</h2>
+          <h2 class="subtitle is-5">Välj en av våra hälsomsamma soppor</h2>
         </Column>
       </Row>
       <Row>
         <Column>
-          <h2 style={h2}>
+          <h2 class="subtitle is-5">
             Beställ soppa till dig själv eller som en gåva till nära och kära
           </h2>
         </Column>
@@ -90,11 +92,33 @@ const HowDoesItWork = () => {
           />
         </Column>
         <Column>
-          <h2 style={h2}>Ta emot din leverans och njut</h2>
+          <h2 class="subtitle is-5">Ta emot din leverans och njut</h2>
         </Column>
       </Row>
     </Section>
   );
+};
+
+const TestimonialsSection = () => {
+  return (
+    <Section className="hero is-bold" style={{
+      backgroundColor: PRIMARY_GREEN
+    }}>
+    
+      <div class="hero-body">
+      <div class="container has-text-centered">
+      <Heading size={"1"} style={{color: "white", margin: "2rem 0rem"}}>
+      Från Kunder
+      </Heading>
+      </div> 
+      </div>
+    
+    <Columns>
+
+    <Testimonial/>
+    </Columns>
+    </Section>
+)
 };
 
 const Row = ({ children }) => (
